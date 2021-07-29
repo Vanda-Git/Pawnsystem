@@ -16,9 +16,11 @@
             <thead>
                 <tr>
                     <th>Nº</th>
-                    <th>Title</th>
-                    <th>Note</th>
-                    <th>Created By</th>
+                    <th>Code</th>
+                    <th>Full Name en</th>
+                    <th>Full Name kh</th>
+                    <th>DOB</th>
+                    <th>Credit Officer</th>
                     <th>Date</th>
                     <th>Action</th>
                 </tr>
@@ -29,20 +31,24 @@
                                                 ROW_NUMBER() OVER (
                                                     ORDER BY t1.id
                                                 ) no,
+                                                t1.code,
+                                                t1.email,
+                                                concat(t1.first_name_en,' ',t1.last_name_en) as fullname_en,
+                                                concat(t1.first_name_kh,' ',t1.last_name_kh) as fullname_kh,
                                                 t1.id,
-                                                t1.title,
-                                                t1.note,
-                                                concat(t2.first_name,' ',t2.last_name) as fullname,
-                                                t1.date_created
-                                            from groups t1
-                                            inner join users t2 on t1.created_by = t2.id");
+                                                t1.dob,
+                                                t1.date_created,
+                                                t1.co_id
+                                            from d_customer t1;");
                 foreach($datas as $data){
                 ?>
                         <tr>
                             <td><?= @$data['no'] ?></td>
-                            <td><?= @$data["title"] ?></td>
-                            <td><?= @$data["note"] ?></td>
-                            <td><?= @$data["fullname"] ?></td>
+                            <td><?= @$data["code"] ?></td>
+                            <td><?= @$data["fullname_en"] ?></td>
+                            <td><?= @$data["fullname_kh"] ?></td>
+                            <td><?= @$data["dob"] ?></td>
+                            <td><?= @$data["co_id"] ?></td>
                             <td><?= @$data["date_created"] ?></td>
                             <td>
                                 <a href="update.php?update_id=<?=@$data["id"]?>" class="btn btn-warning btn-xs"><i class="fas fa-edit"></i> Edit</a>
@@ -67,5 +73,5 @@
     <!-- /.card-body -->
 </div>
 
-<script src="Group.js"></script>
+<script src="user.js"></script>
 <?php include("../Layout/Footer_Iframe.php"); ?>

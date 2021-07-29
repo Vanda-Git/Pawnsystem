@@ -31,34 +31,7 @@ if (isset($_POST["btn_search"])) {
                 where main_menu = '$menu_group'";
     $datas_permission = fetch_all($conn, $sql);
 }
-if(isset($_POST["btn_save"])){
-    $user_group = $_POST["txt_user_group"];
-    $menu_group = $_POST["txt_menu_group"];
-    
-    $ids = $_POST["txt_id"];
 
-    $views = $_POST["views"];
-    $adds = $_POST["adds"];
-    $updates = $_POST["updates"];
-    $deletes = $_POST["deletes"];
-    $user = $_SESSION["user_id"];
-
-    //$result = delete($conn,"delete from permissions where p_group = '$user_group' AND sub_menu = '$menu_group'");
-
-    $sql = "INSERT INTO permissions (sub_menu,p_group,views,adds,updates,deletes,updated_by) VALUES ";
-    foreach($ids as $id=>$key){
-        
-        $view = isset($views[$key])?"1":"0";
-        $add = isset($adds[$key])?"1":"0";
-        $update = isset($updates[$key])?"1":"0";
-        $delete = isset($deletes[$key])?"1":"0";
-
-        $sql .= "('".$ids[$key]."','".$user_group."','".$view."','".$add."','".$update."','".$delete."','".$user."'),";
-    }
-    $sql = rtrim($sql,',');
-    echo $sql;
-    //$result = create($conn,$sql);
-}
 
 ?>
 <div class="card">
@@ -67,7 +40,7 @@ if(isset($_POST["btn_save"])){
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                     <label for="txt_user_group">User Group</label>
-                    <select name="txt_user_group" id="txt_user_group" required class="form-control">
+                    <select name="txt_user_group" id="txt_user_group" required class="form-control txt_user_group">
                         <option value="">---Select Group---</option>
                         <?php
                         $datas = fetch_all($conn, "select id,title from groups");
@@ -81,7 +54,7 @@ if(isset($_POST["btn_save"])){
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                     <label for="txt_menu_group">Menu Group</label>
-                    <select name="txt_menu_group" id="txt_menu_group" required class="form-control">
+                    <select name="txt_menu_group" id="txt_menu_group" required class="form-control txt_menu_group">
                         <option value="">---Select Group---</option>
                         <?php
                         $datas = fetch_all($conn, "select id,caption from main_menus");
@@ -113,27 +86,27 @@ if(isset($_POST["btn_save"])){
                         <th>Delete</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="tbody">
                     <?php
                     foreach ($datas_permission as $data) {
                     ?>
                         <tr>
                             <td>
                                 <?= @$data['no'] ?>
-                                <input type="hidden" name="txt_id[]" value="<?= @$data['id'] ?>">
+                                <input type="hidden" name="txt_id" class="txt_id" value="<?= @$data['id'] ?>">
                             </td>
                             <td><?= @$data["caption"] ?></td>
                             <td>
-                                <input type="checkbox" name="views[]" value="1" <?= @$data["views"] == '1' ? 'checked' : '' ?> >
+                                <input type="checkbox" name="views" class="views" value="1" <?= @$data["views"] == '1' ? 'checked' : '' ?> >
                             </td>
                             <td>
-                                <input type="checkbox" name="adds[]" value="1" <?= @$data["adds"] == '1' ? 'checked' : '' ?> >
+                                <input type="checkbox" name="adds" class="adds" value="1" <?= @$data["adds"] == '1' ? 'checked' : '' ?> >
                             </td>
                             <td>
-                                <input type="checkbox" name="updates[]" value="1" <?= @$data["updates"] == '1' ? 'checked' : '' ?> >
+                                <input type="checkbox" name="updates" class="updates" value="1" <?= @$data["updates"] == '1' ? 'checked' : '' ?> >
                             </td>
                             <td>
-                                <input type="checkbox" name="deletes[]" value="1" <?= @$data["deletes"] == '1' ? 'checked' : '' ?> >
+                                <input type="checkbox" name="deletes" class="deletes" value="1" <?= @$data["deletes"] == '1' ? 'checked' : '' ?> >
                             </td>
                         </tr>
                     <?php
@@ -153,10 +126,11 @@ if(isset($_POST["btn_save"])){
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
                     <br>
-                    <button type="submit" name="btn_save" class="btn btn-primary">Save & Update</button>
+                    <button type="button" name="btn_save" class="btn btn-primary btn_save">Save & Update</button>
                 </div>
             </div>
         </div>
     </form>
 </div>
 <?php include("../Layout/Footer_Iframe.php"); ?>
+<script src="Permission.js"></script>

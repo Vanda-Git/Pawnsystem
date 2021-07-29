@@ -1,6 +1,11 @@
 <?php
     include "Config/Database.php";
-    
+    if(!(isset($_SESSION["user_id"]) && !empty($_SESSION['user_id']))){
+    }
+    else{
+        echo "<script>window.parent.location.href='MainIframe/';</script>";
+        // header("Location: ../index.php");
+    }
     if(isset($_POST["btn_login"])){
         $username = $_POST["user"];
         $password = $_POST["password"];
@@ -50,9 +55,9 @@
                                 <h6 class="mb-0 text-sm">Password</h6>
                             </label> <input type="password" name="password" placeholder="Enter password"> </div>
                         <div class="row px-3 mb-4">
-                            <div class="custom-control custom-checkbox custom-control-inline"><input id="chk1" type="checkbox" name="chk" class="custom-control-input"> <label for="chk1" class="custom-control-label text-sm">Remember me</label> </div> <a href="#" class="ml-auto mb-0 text-sm">Forgot Password?</a>
+                            <!-- <div class="custom-control custom-checkbox custom-control-inline"><input id="chk1" type="checkbox" name="chk" class="custom-control-input"> <label for="chk1" class="custom-control-label text-sm">Remember me</label> </div> <a href="#" class="ml-auto mb-0 text-sm">Forgot Password?</a> -->
                         </div>
-                        <div class="row mb-3 px-3"> <button type="submit" name="btn_login" class="btn btn-blue text-center">Login</button> </div>
+                        <div class="row mb-3 px-3"> <button type="submit" name="btn_login" class="btn btn-blue text-center" style="background:#1A237E;color:white;">Login</button> </div>
                         <div class="row mb-4 px-3"> <small class="font-weight-bold">Don't have an account? <a class="text-danger ">Register</a></small> </div>
                 </form>
             </div>

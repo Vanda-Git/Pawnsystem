@@ -67,5 +67,5 @@
     <!-- /.card-body -->
 </div>
 
-<script src="user.js"></script>
+<script src="Position.js"></script>
 <?php include("../Layout/Footer_Iframe.php"); ?>

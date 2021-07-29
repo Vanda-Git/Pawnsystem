@@ -6,7 +6,7 @@ date_default_timezone_set("Asia/Bangkok");
 $servername = "localhost";
 $username = "root";
 $password = "";
-$database = "pos_v1_db";
+$database = "pawn_system_db";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $database);
@@ -33,14 +33,25 @@ function fetch_single($con, $query)
         } else {
                 echo '<div class="alert alert-danger alert-dismissible">
                                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                <strong>' . $query . 'Fail to Save!</strong>Please contact to system admin.
+                                <strong>' . $con->connect_error . '</strong>Please contact to system admin.
                             </div>';
                 return 0;
         }
         return $results[0];
 }
+function get_master($con, $name)
+{
+        $query = "SELECT code,name,caption FROM d_master where name='$name' order by code asc";
+        $resourse = $con->query($query);
+        $results = [];
+        while ($row = $resourse->fetch_array()) {
+                $results[] = $row;
+        }
+        return $results;
+}
 function authorize($con, $username, $password)
 {
+        $password = md5(md5($password));
         $resourse = $con->query("SELECT
                                         t1.*,
                                         GROUP_CONCAT(t2.p_group SEPARATOR ',') user_group
@@ -78,13 +89,26 @@ function create($con, $query)
                                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                 <strong>Success!</strong>New record has been Inserted.
                             </div>';
-                return 1;
         } else {
                 echo '<div class="alert alert-danger alert-dismissible">
                                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                <strong>' . $query . 'Fail to Save!</strong>Please contact to system admin.
+                                <strong>' . $query . $con->connect_error . '</strong>Please contact to system admin.
                             </div>';
-                return 0;
+        }
+}
+function changePassword($con, $query)
+{
+        $con->query($query);
+        if ($con->affected_rows > 0) {
+                echo '<div class="alert alert-success alert-dismissible">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                <strong>Success!</strong>Record has been Updated.
+                            </div>';
+        } else {
+                echo '<div class="alert alert-danger alert-dismissible">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                <strong>Incorrect Current password! </strong>Please contact to system admin.
+                            </div>';
         }
 }
 function update($con, $query)
@@ -92,13 +116,13 @@ function update($con, $query)
         if ($con->query($query) === TRUE) {
                 echo '<div class="alert alert-success alert-dismissible">
                                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                <strong>Success!</strong>New record has been Updated.
+                                <strong>Success!</strong>Record has been Updated.
                             </div>';
                 return 1;
         } else {
                 echo '<div class="alert alert-danger alert-dismissible">
                                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                <strong>' . $query . 'Fail to Save!</strong>Please contact to system admin.
+                                <strong>' . $con->connect_error . '</strong>Please contact to system admin.
                             </div>';
                 return 0;
         }
@@ -109,5 +133,49 @@ function delete($con, $query)
                 return 1;
         } else {
                 return 0;
+        }
+}
+function singleParameter($conn, $name)
+{
+        return fetch_single($conn, "select value from parameter where name='$name'");
+}
+function allParameter($conn)
+{
+        $json_data = [];
+        $datas = fetch_all($conn, "select name,value from parameters");
+        foreach ($datas as $key => $value) {
+                $json_data[$value["name"]] = $value["value"];
+        }
+        return $json_data;
+}
+$parameters = allParameter($conn);
+
+function upload_image($file, $path)
+{
+
+        $file_name = date("Ymdhis") . '.png';
+        $target_file = "../Asset/" . $path . $file_name;
+        $uploadOk = 1;
+        $check = getimagesize($file["tmp_name"]);
+
+        if ($check !== false) {
+                $uploadOk = 1;
+        } else {
+                $uploadOk = 0;
+        }
+        // Check file size
+        if ($file["size"] > 500000) {
+                $uploadOk = 0;
+        }
+        // Check if $uploadOk is set to 0 by an error
+        if ($uploadOk == 0) {
+                return "0";
+                // if everything is ok, try to upload file
+        } else {
+                if (move_uploaded_file($file["tmp_name"], $target_file)) {
+                        return $file_name;
+                } else {
+                        return "0";
+                }
         }
 }

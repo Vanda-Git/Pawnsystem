@@ -16,8 +16,7 @@ function remove(id, e) {
                         id: id
                     },
                     function (data, status) {
-                        $(e).parents("tr").remove();
-                        $.notify("Deleted!"+data, "error");
+                        $.notify("Can't Deleted! Please contact to system admin.", "error");
                     });
             } else {
                 $.notify("Your record is safe!", "info");

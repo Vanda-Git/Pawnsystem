@@ -15,7 +15,7 @@ if(@$_GET["islogout"] == true){
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Demo Pawn System || Vanda Solution</title>
+  <title><?=@$parameters["CompanyName"]?> || Vanda Solution</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -81,7 +81,12 @@ if(@$_GET["islogout"] == true){
           </div>
         </li>
         <li class="nav-item">
-          <a class="btn btn-link" href="?islogout=true">
+          <a class="btn btn-link" href="?islogout=true" title="Password">
+            <i class="fas fa-lock "></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-link" href="?islogout=true" title="LogOut">
             <i class="fas fa-power-off"></i>
           </a>
         </li>
@@ -110,7 +115,7 @@ if(@$_GET["islogout"] == true){
             <img src="../dist/img/Logo.jpg" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <a href="#" class="d-block">Pawn System</a>
+            <a href="#" class="d-block"><?=@$parameters["CompanyName"]?></a>
           </div>
         </div>
 
