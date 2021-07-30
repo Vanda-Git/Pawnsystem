@@ -1,23 +1,8 @@
 
 use pawn_system_db;
 
-select
-    t1.code,
-    concat(t1.first_name_en,' ',t1.last_name_en) as fullname_en,
-    concat(t1.first_name_kh,' ',t1.last_name_kh) as fullname_kh,
-    t1.id,
-    t1.dob,
-    t1.date_created,
-    t1.co_id
-from d_customer t1;
+INSERT INTO pawn_system_db.d_customer (id, code, first_name_en, middle_name_en, last_name_en, first_name_kh, last_name_kh, gender, dob, phone, email, id1_type, id1_number, id1_expire, id1_issue, id1_place, id1_document, id2_type, id2_number, id2_expire, id2_issue, id2_place, id2_document, id3_type, id3_number, id3_expire, id3_issue, id3_place, id3_document, address_line1, address_line2, country, province, district, commune, village, is_owner, target, occupation, company_name, total_income, currency, co_id, remark, created_by, updated_by, date_created, date_updated) VALUES (1, '20210728103256', 'Bros', null, 'Vannyda', 'ប្រុស', 'វណ្ណនីដា', 'Female', '2021-07-29', '0987654321', 'vannyda.kh@gmail.com', 'B', '098765432', '2021-07-28', '2021-07-28', null, '', null, null, null, null, null, null, null, null, null, null, null, null, '', '', 'KH', '01', '0103', '010302', '01030201', 'EM', 'PR', 'Officer', 'FUNAN', 700, 'USD', null, null, 1, 1, '2021-07-28 22:32:56', '2021-07-29 22:18:31');
+INSERT INTO pawn_system_db.d_customer (id, code, first_name_en, middle_name_en, last_name_en, first_name_kh, last_name_kh, gender, dob, phone, email, id1_type, id1_number, id1_expire, id1_issue, id1_place, id1_document, id2_type, id2_number, id2_expire, id2_issue, id2_place, id2_document, id3_type, id3_number, id3_expire, id3_issue, id3_place, id3_document, address_line1, address_line2, country, province, district, commune, village, is_owner, target, occupation, company_name, total_income, currency, co_id, remark, created_by, updated_by, date_created, date_updated) VALUES (2, '20210728105602', 'Bros', null, 'Vannyda', 'ប្រុស', 'វណ្ណនីដា', 'Female', '2021-07-28', '0987654321', 'kdara@gmail.com', 'B', '098765432', '2021-07-28', '2021-07-28', null, '20210729101926.png', null, null, null, null, null, null, null, null, null, null, null, null, '', '', 'KH', '01', '0102', '010202', '01020202', 'EM', 'PR', 'Officer', 'FUNAN', 700, 'USD', null, null, 1, 1, '2021-07-28 22:56:02', '2021-07-29 22:19:26');
 
-SELECT
-                code,
-                name,
-                caption
-            FROM d_master
-            where name='DISTRICT' AND code like '01%'
-            order by code asc
 
-INSERT INTO d_customer ( code, first_name_en, last_name_en, first_name_kh, last_name_kh, gender, dob, phone, email, id1_type, id1_number, id1_document, id1_issue, id1_expire, country, province, district, commune, village, address_line1, address_line2, is_owner, target, occupation, company_name, total_income, currency, created_by )
-VALUES ( '1', 'Bros', 'Vannyda', 'ប្រុស', 'វណ្ណនីដា', 'Male', '2021-07-28', '0987654321', 'vannyda.kh@gmail.com', 'B', '098765432', '', '2021-07-28', '2021-07-19', 'KH', '01', '0102', '010201', '01020101', '', '', 'EM', 'PU', '', '', '700', 'USD', '1' )
+

@@ -5,7 +5,7 @@
 <div class="card">
     <div class="card-header">
         <!-- <h3 class="card-title">Import Record</h3> -->
-        <a href="add.php" class="btn btn-primary">
+        <a href="add.php" class="btn btn-primary btn_add">
             <i class="fas fa-plus"></i>
             New Record
         </a>
@@ -51,8 +51,8 @@
                             <td><?= @$data["title"] ?></td>
                             <td><?= @$data["date_created"] ?></td>
                             <td>
-                                <a href="update.php?update_id=<?=@$data["id"]?>" class="btn btn-warning btn-xs"><i class="fas fa-edit"></i> Edit</a>
-                                <a href="javascript:void(0)" onclick='remove(<?=@$data["id"]?>,this)' class="btn btn-danger btn-xs"><i class="fas fa-user-minus"></i> Disable</a>
+                                <a href="update.php?update_id=<?=@$data["id"]?>" class="btn btn-warning btn-xs btn_update"><i class="fas fa-edit"></i> Edit</a>
+                                <a href="javascript:void(0)" onclick='remove(<?=@$data["id"]?>,this)' class="btn btn-danger btn-xs btn_delete"><i class="fas fa-user-minus"></i> Disable</a>
                             </td>
                         </tr>
                 <?php

@@ -57,7 +57,7 @@ if (isset($_POST["btn_save"])) {
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                     <label for="">&emsp;</label>
                     <br>
-                    <button type="submit" class="btn btn-primary" name="btn_save">Change Password</button>
+                    <button type="submit" class="btn btn-primary btn_update" name="btn_save">Change Password</button>
                 </div>
             </div>
         </div>

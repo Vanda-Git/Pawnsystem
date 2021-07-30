@@ -21,11 +21,13 @@
         $village = $_POST["txt_village"];
         $address_line1 = $_POST["txt_address_line1"];
         $address_line2 = $_POST["txt_address_line2"];
+        $remark = $_POST["txt_remark"];
         $target = $_POST["txt_target"];
         $is_owner = $_POST["txt_is_owner"];
         $occupation = $_POST["txt_occupation"];
         $company_name = $_POST["txt_company_name"];
         $total_income = $_POST["txt_total_income"];
+        $coid = $_POST["txt_coid"];
         $create_by = $_SESSION["user_id"];
         
         //check upload document
@@ -54,11 +56,13 @@
                 village,
                 address_line1,
                 address_line2,
+                remark,
                 is_owner,
                 target,
                 occupation,
                 company_name,
                 total_income,
+                co_id,
                 currency,
                 created_by    
                 )
@@ -85,11 +89,13 @@
                 '".$village."',
                 '".$address_line1."',
                 '".$address_line2."',
+                '".$remark."',
                 '".$is_owner."',
                 '".$target."',
                 '".$occupation."',
                 '".$company_name."',
                 '".$total_income."',
+                '".$coid."',
                 'USD',
                 '".$create_by."'
                 )";
@@ -111,6 +117,7 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <label for="" class="text-danger"><u> <i class="fa fa-arrow-right"></i> General Information</u>(*)</label>
+                    <input type="hidden" class="form-control txt_code" name="txt_code" id="txt_code" value="" readonly>
                 </div>
                 <div class="col-xs-6 col-sm-2 col-md-2 col-lg-2">
                     <label for="txt_id_type">ID Type<i class="text-danger">(*)</i></label>
@@ -177,10 +184,6 @@
                 <div class="col-xs-6 col-sm-2 col-md-2 col-lg-2">
                     <label for="txt_document">ID Document</label>
                     <input type="file" class="form-control txt_document" name="txt_id_document" id="txt_document">
-                </div>
-                <div class="col-xs-6 col-sm-2 col-md-2 col-lg-2">
-                    <label for="txt_image">Image</label>
-                    <input type="file" class="form-control txt_image" name="txt_image" id="txt_image">
                 </div>
             </div>
             <div class="row">
@@ -290,6 +293,20 @@
                 <div class="col-xs-6 col-sm-2 col-md-2 col-lg-2">
                     <label for="txt_income">Total Income $ <i class="text-danger">(*)</i></label>
                     <input type="text" class="form-control txt_income" name="txt_total_income" id="txt_income">
+                </div>
+                <div class="col-xs-6 col-sm-2 col-md-2 col-lg-2">
+                    <label for="txt_coid">Credit Officer<i class="text-danger">(*)</i></label>
+                    <select name="txt_coid" id="txt_coid" class="form-control txt_coid" required>
+                            <option value="">---Select item---</option>
+                        <?php
+                            $datas = get_master($conn, "CO");
+                            foreach($datas as $key=>$data){
+                        ?>
+                            <option value="<?=$data["code"]?>"><?=$data["code"]?> - <?=$data["caption"]?></option>
+                        <?php
+                            }
+                        ?>
+                    </select>
                 </div>
             </div>
             <div class="row">

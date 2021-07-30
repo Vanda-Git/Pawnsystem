@@ -90,7 +90,7 @@ if (isset($_POST["btn_search"])) {
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
                     <br>
-                    <button type="button" name="btn_save" class="btn btn-primary btn_save">Save & Update</button>
+                    <button type="button" name="btn_save" class="btn btn-primary btn_save btn_add">Save & Update</button>
                 </div>
             </div>
         </div>

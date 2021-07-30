@@ -10,6 +10,7 @@ INSERT INTO pawn_system_db.sub_menus (id, main_menu, caption, url, icon, class, 
 INSERT INTO pawn_system_db.sub_menus (id, main_menu, caption, url, icon, class, note, created_by, updated_by, date_created, date_updated) VALUES (9, 5, 'Reset Password', '../ResetPassword/', '<i class="far fa-circle nav-icon"></i>', 'nav-item', '', 1, null, '2021-07-10 21:58:30', null);
 INSERT INTO pawn_system_db.sub_menus (id, main_menu, caption, url, icon, class, note, created_by, updated_by, date_created, date_updated) VALUES (10, 5, 'System Parameter', '../SystemParameter/', '<i class="far fa-circle nav-icon"></i>', 'nav-item', '', 1, null, '2021-07-10 21:58:30', null);
 INSERT INTO pawn_system_db.sub_menus (id, main_menu, caption, url, icon, class, note, created_by, updated_by, date_created, date_updated) VALUES (11, 4, 'Change Password', '../ChangePassword/', '<i class="far fa-circle nav-icon"></i>', 'nav-item', '', 1, null, '2021-07-10 21:58:30', null);
+INSERT INTO pawn_system_db.sub_menus (id, main_menu, caption, url, icon, class, note, created_by, updated_by, date_created, date_updated) VALUES (12, 5, 'LookUp Code', '../LookupCode/', '<i class="far fa-circle nav-icon"></i>', 'nav-item', '', 1, null, '2021-07-10 21:58:30', null);
 
 truncate table pawn_system_db.main_menus;
 INSERT INTO pawn_system_db.main_menus (id, caption, url, icon, class, note, created_by, updated_by, date_created, date_updated) VALUES (1, 'Customer', '#', '<i class="nav-icon fas fa-database"></i>', 'nav-item', '', 1, null, '2021-07-10 21:50:06', null);
@@ -73,4 +74,41 @@ VALUES('PR','TARGET','Private','','1','','1');
 INSERT INTO pawn_system_db.d_master(code, name, caption, remark, status, note, created_by)
 VALUES('OT','TARGET','Other','','1','','1');
 
+delete from d_master where name = 'STATUS';
+INSERT INTO pawn_system_db.d_master(code, name, caption, remark, status, note, created_by)
+VALUES('C','STATUS','Closed','','1','','1');
+INSERT INTO pawn_system_db.d_master(code, name, caption, remark, status, note, created_by)
+VALUES('N','STATUS','Normal','','1','','1');
 
+delete from d_master where name = 'CO';
+INSERT INTO pawn_system_db.d_master(code, name, caption, remark, status, note, created_by)
+VALUES('0001','CO','So Cheat','','1','','1');
+INSERT INTO pawn_system_db.d_master(code, name, caption, remark, status, note, created_by)
+VALUES('0002','CO','Chen Da','','1','','1');
+
+
+delete from d_master where name = 'CO';
+INSERT INTO pawn_system_db.d_master(code, name, caption, remark, status, note, created_by)
+VALUES('0001','CO','So Cheat','','1','','1');
+INSERT INTO pawn_system_db.d_master(code, name, caption, remark, status, note, created_by)
+VALUES('0002','CO','Chen Da','','1','','1');
+
+SELECT
+    SUM(t1.views) as views,
+    SUM(t1.adds) as adds,
+    SUM(t1.updates) as updates,
+    SUM(t1.deletes) as deletes
+FROM permissions t1
+inner join sub_menus t2 on t1.sub_menu = t2.id
+where t1.p_group in (1,2) and t2.url = '../LookupCode/'
+#group by views,adds,updates,deletes
+
+select
+t1.id,
+t1.caption,
+t1.icon,
+t1.url
+from sub_menus t1
+inner join permissions t2 on t1.id = t2.sub_menu and t2.views=1
+where main_menu = '4' and t2.p_group in (1,2)
+group by t1.id

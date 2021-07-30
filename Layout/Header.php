@@ -153,7 +153,7 @@ if(@$_GET["islogout"] == true){
                                                     t1.url
                                                 from sub_menus t1
                                                 inner join permissions t2 on t1.id = t2.sub_menu and t2.views=1
-                                                where main_menu = '".$data['id']."' and t2.p_group in ($group)");
+                                                where main_menu = '".$data['id']."' and t2.p_group in ($group) group by t1.id");
                   foreach ($sub_datas as $sub_data) {
                   ?>
                     <li class="nav-item">

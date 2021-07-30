@@ -34,9 +34,11 @@
 <script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
 <script>
-  $(function () {
+  $(function() {
     $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "responsive": true,
+      "lengthChange": false,
+      "autoWidth": false,
       // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
       "buttons": ["copy", "excel", "pdf", "print", "colvis"]
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
@@ -51,3 +53,43 @@
     });
   });
 </script>
+
+<?php
+$url = $_SERVER['PHP_SELF']; //returns the current URL
+$parts = explode("/", $url);
+
+$group = $_SESSION["user_group"];
+$sql = "SELECT
+          SUM(t1.views) as views,
+          SUM(t1.adds) as adds,
+          SUM(t1.updates) as updates,
+          SUM(t1.deletes) as deletes
+        FROM permissions t1
+        inner join sub_menus t2 on t1.sub_menu = t2.id
+        where t1.p_group in ($group) and t2.url = '../" . $parts[2] . "/'";
+
+$datas_permission = fetch_single($conn, $sql);
+
+
+if ($datas_permission["adds"] == 0) {
+?>
+  <script>
+    $('.btn_add').remove();
+  </script>
+<?php
+}
+if ($datas_permission["updates"] == 0) {
+?>
+  <script>
+    $('.btn_update').remove();
+  </script>
+<?php
+}
+if ($datas_permission["deletes"] == 0) {
+?>
+  <script>
+    $('.btn_delete').remove();
+  </script>
+<?php
+}
+?>

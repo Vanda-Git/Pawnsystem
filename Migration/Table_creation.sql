@@ -55,6 +55,7 @@ create table pawn_system_db.d_customer
     currency      varchar(10)                          null,
     co_id         varchar(10)                          null,
     remark        varchar(1000)                        null,
+    status        varchar(1000)  default 'N'                     null,
     created_by    int                                  null,
     updated_by    int                                  null,
     date_created  datetime default current_timestamp() null,
