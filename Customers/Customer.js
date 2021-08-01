@@ -40,10 +40,10 @@ $(document).ready(function () {
         setTimeout(function(){
             $(".txt_commune").val(commune_code);
             $(".txt_commune").change();
-        },1000);
+        },1500);
         setTimeout(function(){
             $(".txt_village").val(village_code);
-        },1500);
+        },2500);
     }
 });
 

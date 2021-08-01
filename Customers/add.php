@@ -4,8 +4,8 @@
     if(isset($_POST["btn_save"])){
         $first_name_en = $_POST["txt_first_name_en"];
         $last_name_en = $_POST["txt_last_name_en"];
-        $first_name_kh = $_POST["txt_first_name_kh"];
-        $last_name_kh = $_POST["txt_last_name_kh"];
+        $first_name_kh = $conn->real_escape_string($_POST["txt_first_name_kh"]);
+        $last_name_kh = $conn->real_escape_string($_POST["txt_last_name_kh"]);
         $gender = $_POST["txt_gender"];
         $dob = $_POST["txt_dob"];
         $phone = $_POST["txt_phone"];

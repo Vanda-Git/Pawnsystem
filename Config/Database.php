@@ -26,6 +26,8 @@ if($_SERVER['SERVER_NAME'] == 'project.localhost'){
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $database);
+mysqli_set_charset($conn, 'utf8');
+date_default_timezone_set('Asia/Bangkok');
 
 // Check connection
 //  if ($conn->connect_error) {
