@@ -69,7 +69,7 @@ $sql = "SELECT
         where t1.p_group in ($group) and t2.url = '../" . $parts[2] . "/'";
 
 $datas_permission = fetch_single($conn, $sql);
-
+echo $url."<br>".$parts[2];
 
 if ($datas_permission["adds"] == 0) {
 ?>
