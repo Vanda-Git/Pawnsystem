@@ -7,7 +7,7 @@ $servername = "sql110.epizy.com";
 $username = "epiz_29280825";
 $password = "z6is2aSmUY6KIy";
 $database = "epiz_29280825_pawn_system_db";
-if($_SERVER['SERVER_NAME'] == 'project.localhost'){
+if($_SERVER['SERVER_NAME'] == 'project.localhost' && TRUE){
         $servername = "localhost";
         $username = "root";
         $password = "";
