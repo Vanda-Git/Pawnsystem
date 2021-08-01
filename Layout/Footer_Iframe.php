@@ -53,11 +53,7 @@
     });
   });
 </script>
-
 <?php
-$url = $_SERVER['PHP_SELF']; //returns the current URL
-$parts = explode("/", $url);
-
 $group = $_SESSION["user_group"];
 $sql = "SELECT
           SUM(t1.views) as views,
@@ -66,10 +62,9 @@ $sql = "SELECT
           SUM(t1.deletes) as deletes
         FROM permissions t1
         inner join sub_menus t2 on t1.sub_menu = t2.id
-        where t1.p_group in ($group) and t2.url = '../" . $parts[2] . "/'";
+        where t1.p_group in ($group) and t2.url = '../" . $access_module . "/'";
 
 $datas_permission = fetch_single($conn, $sql);
-echo $url."<br>".$parts[2];
 
 if ($datas_permission["adds"] == 0) {
 ?>

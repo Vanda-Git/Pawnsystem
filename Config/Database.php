@@ -7,11 +7,17 @@ $servername = "sql110.epizy.com";
 $username = "epiz_29280825";
 $password = "z6is2aSmUY6KIy";
 $database = "epiz_29280825_pawn_system_db";
-if($_SERVER['SERVER_NAME'] == 'project.localhost' && TRUE){
+
+$system_url = $_SERVER['PHP_SELF']; //returns the current URL
+$system_parts = explode("/", $system_url);
+$access_module = $system_parts[1];
+
+if($_SERVER['SERVER_NAME'] == 'project.localhost'){
         $servername = "localhost";
         $username = "root";
         $password = "";
         $database = "pawn_system_db";
+        $access_module = $system_parts[2];
 }
 
 // ini_set('display_errors', 1);
