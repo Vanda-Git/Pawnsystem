@@ -3,10 +3,20 @@ session_start();
 ob_start();
 date_default_timezone_set("Asia/Bangkok");
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "pawn_system_db";
+$servername = "sql110.epizy.com";
+$username = "epiz_29280825";
+$password = "z6is2aSmUY6KIy";
+$database = "epiz_29280825_pawn_system_db";
+if($_SERVER['SERVER_NAME'] == 'project.localhost'){
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $database = "pawn_system_db";
+}
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $database);
@@ -25,7 +35,7 @@ function fetch_all($con, $query)
 {
         $resourse = $con->query($query);
         $results = [];
-        while ($row = $resourse->fetch_array()) {
+        while ($row = $resourse->fetch_assoc()) {
                 $results[] = $row;
         }
         return $results;

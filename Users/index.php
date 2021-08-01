@@ -28,9 +28,7 @@
             <tbody>
                 <?php
                 $datas = fetch_all($conn,"  select
-                                                ROW_NUMBER() OVER (
-                                                    ORDER BY t1.id
-                                                ) no,
+                                                t1.id no,
                                                 t1.id,
                                                 t1.first_name,
                                                 t1.last_name,

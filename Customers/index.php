@@ -28,9 +28,7 @@
             <tbody>
                 <?php
                 $datas = fetch_all($conn,"  select
-                                                ROW_NUMBER() OVER (
-                                                    ORDER BY t1.id
-                                                ) no,
+                                                t1.id no,
                                                 t1.code,
                                                 t1.email,
                                                 concat(t1.first_name_en,' ',t1.last_name_en) as fullname_en,

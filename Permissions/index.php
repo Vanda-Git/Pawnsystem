@@ -7,9 +7,7 @@ if (isset($_POST["btn_search"])) {
     $user_group = $_POST["txt_user_group"];
     $menu_group = $_POST["txt_menu_group"];
     $sql = "select
-                    ROW_NUMBER() OVER (
-                        ORDER BY t1.id
-                    ) no,
+                    t1.id no,
                     t1.id,
                     t1.caption,
                     t2.views,
@@ -69,7 +67,7 @@ if (isset($_POST["btn_search"])) {
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                     <label for="">&emsp;</label>
                     <br>
-                    <button type="submit" class="btn btn-primary btn_update" name="btn_search">Show</button>
+                    <button type="submit" class="btn btn-primary" name="btn_search">Show</button>
                 </div>
             </div>
         </div>
