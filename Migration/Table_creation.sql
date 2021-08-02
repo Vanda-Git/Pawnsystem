@@ -78,10 +78,12 @@ create table pawn_system_db.`groups`
     date_updated datetime                             null
 );
 
+drop table pawn_system_db.main_menus;
 create table pawn_system_db.main_menus
 (
     id           int auto_increment
         primary key,
+    rank int null,
     caption      varchar(255)                         null,
     url          varchar(255)                         null,
     icon         varchar(255)                         null,
@@ -149,10 +151,12 @@ create table pawn_system_db.products
     date_updated datetime                             null
 );
 
+drop table pawn_system_db.sub_menus;
 create table pawn_system_db.sub_menus
 (
     id           int auto_increment
         primary key,
+        rank int null,
     main_menu    int                                  null,
     caption      varchar(255)                         null,
     url          varchar(255)                         null,
@@ -201,4 +205,34 @@ create table pawn_system_db.d_master(
     updated_by   int                                      null,
     date_created datetime     default current_timestamp() null,
     date_updated datetime                                 null
-)
+);
+
+drop table d_collaterals;
+create table d_collaterals(
+    id           int auto_increment
+        primary key,
+    code nvarchar(255),
+    title_type nvarchar(255),
+    customer_id int null,
+    owner_name nvarchar(255) null,
+    number nvarchar(255) null,
+    plat_number nvarchar(255) null,
+    issue_date nvarchar(255) null,
+    issue_place nvarchar(255) null,
+    value float not null,
+    location nvarchar(255) null,
+    status nvarchar(255),
+    note         text                                     null,
+    created_by   int                                      null,
+    updated_by   int                                      null,
+    date_created datetime     default current_timestamp() null,
+    date_updated datetime                                 null
+);
+
+select
+    t1.id no,
+    t1.code,
+    t1.owner_name,
+    t1.value,
+    t1.location
+from d_collaterals t1;

@@ -2,7 +2,7 @@
 require_once '../Config/Database.php';
 require_once '../Config/Authorize.php';
 
-if(@$_GET["islogout"] == true){
+if (@$_GET["islogout"] == true) {
   session_destroy();
   header("Location: ../");
 }
@@ -15,7 +15,7 @@ if(@$_GET["islogout"] == true){
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title><?=@$parameters["CompanyName"]?> || Vanda Solution</title>
+  <title><?= @$parameters["CompanyName"] ?> || Vanda Solution</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -31,6 +31,32 @@ if(@$_GET["islogout"] == true){
   <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 
+  <style>
+    /* for refresh page */
+    .pace {
+      -webkit-pointer-events: none;
+      pointer-events: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    .pace-inactive {
+      display: none;
+    }
+
+    .pace .pace-progress {
+      background: black;
+      position: fixed;
+      z-index: 2000;
+      top: 0;
+      right: 100%;
+      width: 100%;
+      height: 4px;
+    }
+
+    /* end */
+  </style>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed" data-panel-auto-height-mode="height">
@@ -115,7 +141,7 @@ if(@$_GET["islogout"] == true){
             <img src="../dist/img/Logo.jpg" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <a href="#" class="d-block"><?=@$parameters["CompanyName"]?></a>
+            <a href="#" class="d-block"><?= @$parameters["CompanyName"] ?></a>
           </div>
         </div>
 
@@ -123,7 +149,7 @@ if(@$_GET["islogout"] == true){
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <?php
-            $datas = fetch_all($conn, "select id,caption,icon,url from main_menus");
+            $datas = fetch_all($conn, "select id,caption,icon,url from main_menus order by rank asc");
             foreach ($datas as $data) {
             ?>
               <li class="nav-item">
@@ -144,8 +170,8 @@ if(@$_GET["islogout"] == true){
                               t1.url
                           from sub_menus t1
                           inner join permissions t2 on t1.id = t2.sub_menu and t2.views=1
-                          where main_menu = '".$data['id']."' and t2.p_group in ($group)";
-                  echo "<script>alert(".$sql.");</script>";
+                          where main_menu = '" . $data['id'] . "' and t2.p_group in ($group) order by t1.rank asc";
+                  echo "<script>alert(" . $sql . ");</script>";
                   $sub_datas = fetch_all($conn, "select
                                                     t1.id,
                                                     t1.caption,
@@ -153,12 +179,12 @@ if(@$_GET["islogout"] == true){
                                                     t1.url
                                                 from sub_menus t1
                                                 inner join permissions t2 on t1.id = t2.sub_menu and t2.views=1
-                                                where main_menu = '".$data['id']."' and t2.p_group in ($group) group by t1.id");
+                                                where main_menu = '" . $data['id'] . "' and t2.p_group in ($group) group by t1.id");
                   foreach ($sub_datas as $sub_data) {
                   ?>
                     <li class="nav-item">
                       <a href="<?= @$sub_data['url'] ?>" class="nav-link">
-                      <?= @$sub_data['icon'] ?>
+                        <?= @$sub_data['icon'] ?>
                         <p><?= @$sub_data['caption'] ?></p>
                       </a>
                     </li>
