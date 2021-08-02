@@ -1,12 +1,4 @@
-create table pawn_system_db.category
-(
-    id           int auto_increment
-        primary key,
-    title        varchar(255)                         null,
-    note         text                                 null,
-    date_created datetime default current_timestamp() null,
-    date_updated datetime                             null
-);
+
 
 drop table pawn_system_db.d_customer;
 create table pawn_system_db.d_customer

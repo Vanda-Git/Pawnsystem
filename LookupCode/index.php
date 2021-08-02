@@ -4,9 +4,7 @@
 <?php
 $datas_parameter = [];
     $sql = "select
-                ROW_NUMBER() OVER (
-                    ORDER BY t1.id
-                ) no,
+                t1.id no,
                 t1.id,
                 t1.code,
                 t1.name,
