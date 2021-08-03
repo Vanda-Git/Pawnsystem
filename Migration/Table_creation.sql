@@ -229,10 +229,4 @@ create table d_collaterals(
     date_updated datetime                                 null
 );
 
-select
-    t1.id no,
-    t1.code,
-    t1.owner_name,
-    t1.value,
-    t1.location
-from d_collaterals t1;
+create table migrations ( id int auto_increment primary key, filename text not null, status int not null, date datetime default current_timestamp() not null ); 
