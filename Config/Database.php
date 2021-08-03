@@ -12,7 +12,7 @@ $system_url = $_SERVER['PHP_SELF']; //returns the current URL
 $system_parts = explode("/", $system_url);
 $access_module = $system_parts[1];
 
-if($_SERVER['SERVER_NAME'] == 'project.localhost'){
+if($_SERVER['SERVER_NAME'] == 'project.localhost' || $_SERVER['SERVER_NAME'] == 'localhost'){
         $servername = "localhost";
         $username = "root";
         $password = "";
