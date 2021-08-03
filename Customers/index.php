@@ -21,6 +21,7 @@
                     <th>Full Name kh</th>
                     <th>DOB</th>
                     <th>Credit Officer</th>
+                    <th>Document</th>
                     <th>Date</th>
                     <th>Action</th>
                 </tr>
@@ -36,7 +37,8 @@
                                                 t1.id,
                                                 t1.dob,
                                                 t1.date_created,
-                                                t1.co_id
+                                                t1.co_id,
+                                                t1.id1_document
                                             from d_customer t1 WHERE t1.status='N';");
                 foreach($datas as $data){
                 ?>
@@ -47,6 +49,7 @@
                             <td><?= @$data["fullname_kh"] ?></td>
                             <td><?= @$data["dob"] ?></td>
                             <td><?= @$data["co_id"] ?></td>
+                            <td><a target="_blank" href="../Asset/Customers/ID/<?= @$data["id1_document"] ?>"><?= @$data["id1_document"] ?></a></td>
                             <td><?= @$data["date_created"] ?></td>
                             <td>
                                 <a href="update.php?update_id=<?=@$data["id"]?>" class="btn btn-warning btn-xs btn_update"><i class="fas fa-edit"></i> Edit</a>

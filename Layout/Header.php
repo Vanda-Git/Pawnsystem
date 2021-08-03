@@ -31,6 +31,9 @@ if (@$_GET["islogout"] == true) {
   <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   
+  <!-- Icon title -->
+  <link rel="shortcut icon" href="../Asset/System/Logo.png" type="image/x-icon">
+
   <!-- Pace Loading bar -->
   <link rel="stylesheet" href="../dist/css/pace.css">
 
@@ -48,7 +51,7 @@ if (@$_GET["islogout"] == true) {
         </li class="nav-item">
         
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="#" class="nav-link"><b>Operation Date <font class="mytime">01-Jan-1990 00:00:00</font></b></a>
+          <a href="#" class="nav-link"><b><?=$_SESSION["user_firstname"]?> <?=$_SESSION["user_lastname"]?> | Operation Date <font class="mytime">01-Jan-1990 00:00:00</font></b></a>
         </li>
         <!-- <li class="nav-item d-none d-sm-inline-block">
           <a href="#" class="nav-link">Contact</a>
@@ -80,6 +83,11 @@ if (@$_GET["islogout"] == true) {
           </a>
         </li>
         <li class="nav-item">
+          <a class="btn btn-link" href="../migrations/" title="Backup & Migration">
+            <i class="fas fa-cog"></i>
+          </a>
+        </li>
+        <li class="nav-item">
           <a class="btn btn-link" href="?islogout=true" title="LogOut">
             <i class="fas fa-power-off"></i>
           </a>
@@ -106,7 +114,7 @@ if (@$_GET["islogout"] == true) {
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
-            <img src="../dist/img/Logo.jpg" class="img-circle elevation-2" alt="User Image">
+            <img src="../Asset/System/Logo.png" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
             <a href="#" class="d-block"><?= @$parameters["CompanyName"] ?></a>

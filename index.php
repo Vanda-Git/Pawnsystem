@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="dist/css/Login/login.css">
 <link rel="stylesheet" href="dist/css/Login/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="shortcut icon" href="Asset/System/V_logo.png" type="image/x-icon">
+<link rel="shortcut icon" href="Asset/System/Logo.png" type="image/x-icon">
 <script src="dist/css/Login/bootstrap.bundle.min.js"></script>
 <script src="dist/css/Login/jquery.min.js"></script>
 <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
@@ -27,7 +27,7 @@
             <div class="col-lg-6">
                 <div class="card1 pb-5">
                     <!-- <div class="row"> <img src="https://i.imgur.com/CXQmsmF.png" class="logo"> </div> -->
-                    <div class="row"> <img src="Asset/System/V_logo.png" class="logo"> </div>
+                    <div class="row"> <img src="Asset/System/Logo.png" class="logo"> </div>
                     <!-- <div class="row px-3 justify-content-center mt-4 mb-5 border-line"> <img src="https://i.imgur.com/uNGdWHi.png" class="image"> </div> -->
                     <div class="row px-3 justify-content-center mt-4 mb-5 border-line"> <img src="Asset/System/uNGdWHi.png" class="image"> </div>
                 </div>
@@ -61,7 +61,7 @@
                             <!-- <div class="custom-control custom-checkbox custom-control-inline"><input id="chk1" type="checkbox" name="chk" class="custom-control-input"> <label for="chk1" class="custom-control-label text-sm">Remember me</label> </div> <a href="#" class="ml-auto mb-0 text-sm">Forgot Password?</a> -->
                         </div>
                         <div class="row mb-3 px-3"> <button type="submit" name="btn_login" class="btn btn-blue text-center" style="background:#1A237E;color:white;">Login</button> </div>
-                        <div class="row mb-4 px-3"> <small class="font-weight-bold">Don't have an account? <a class="text-danger ">Register</a></small> </div>
+                        <div class="row mb-4 px-3"> <small class="font-weight-bold">If you want system account to login, <a class="text-danger ">Please contact to system admin to create your user.</a></small> </div>
                 </form>
             </div>
         </div>
