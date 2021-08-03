@@ -37,6 +37,7 @@
         //check upload document
         $id1_document = $_POST["hidden_document"];
         if($_FILES["txt_id_document"]["tmp_name"] != ""){
+            @unlink("../Asset/Customers/ID/".$id1_document);
             $id1_document = upload_image($_FILES["txt_id_document"],"Customers/ID/");
         }
         //End uplaod document

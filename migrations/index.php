@@ -49,6 +49,9 @@ if(isset($_POST['btn_start'])){
                 }
         }
     }
+    else{
+        echo "This module for Developer use only!";
+    }
 }
 ?>
 
@@ -62,9 +65,11 @@ if(isset($_POST['btn_start'])){
 </head>
 <body>
     <h1>Migration Process</h1>
+    <p style="color:red;">This module for Developer use only!</p>
+    <a href="../">Back to System</a>
     <p>Please enter PIN to start migrate.</p>
     <form action="" method="post" enctype="multipart/form">
-        PIN <input type="text" name="txt_pin" id="">
+        PIN <input type="password" name="txt_pin" id="">
         <button name="btn_start">Start</button>
     </form>
 </body>

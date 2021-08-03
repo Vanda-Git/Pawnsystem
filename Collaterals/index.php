@@ -17,40 +17,36 @@
                 <tr>
                     <th>Nº</th>
                     <th>Code</th>
-                    <th>Full Name en</th>
-                    <th>Full Name kh</th>
-                    <th>DOB</th>
-                    <th>Credit Officer</th>
-                    <th>Document</th>
+                    <th>Owner</th>
+                    <th>Value</th>
+                    <th>Location</th>
                     <th>Date</th>
+                    <th>Document</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
                 $datas = fetch_all($conn,"  select
-                                                t1.id no,
-                                                t1.code,
-                                                t1.email,
-                                                concat(t1.first_name_en,' ',t1.last_name_en) as fullname_en,
-                                                concat(t1.first_name_kh,' ',t1.last_name_kh) as fullname_kh,
-                                                t1.id,
-                                                t1.dob,
-                                                t1.date_created,
-                                                t1.co_id,
-                                                t1.id1_document
-                                            from d_customer t1 WHERE t1.status='N';");
+                                            t1.id no,
+                                            t1.id,
+                                            t1.code,
+                                            t1.owner_name,
+                                            t1.value,
+                                            t1.location,
+                                            t1.document,
+                                            t1.date_created
+                                        from d_collaterals t1 WHERE status = 'N';");
                 foreach($datas as $data){
                 ?>
                         <tr>
                             <td><?= @$data['no'] ?></td>
                             <td><?= @$data["code"] ?></td>
-                            <td><?= @$data["fullname_en"] ?></td>
-                            <td><?= @$data["fullname_kh"] ?></td>
-                            <td><?= @$data["dob"] ?></td>
-                            <td><?= @$data["co_id"] ?></td>
-                            <td><a target="_blank" href="../Asset/Customers/ID/<?= @$data["id1_document"] ?>"><?= @$data["id1_document"] ?></a></td>
+                            <td><?= @$data["owner_name"] ?></td>
+                            <td><?= @$data["value"] ?></td>
+                            <td><?= @$data["location"] ?></td>
                             <td><?= @$data["date_created"] ?></td>
+                            <td><a target="_blank" href="../Asset/Collaterals/<?= @$data["document"] ?>"><?= @$data["document"]?></a></td>
                             <td>
                                 <a href="update.php?update_id=<?=@$data["id"]?>" class="btn btn-warning btn-xs btn_update"><i class="fas fa-edit"></i> Edit</a>
                                 <a href="javascript:void(0)" onclick='remove(<?=@$data["id"]?>,this)' class="btn btn-danger btn-xs btn_delete"><i class="fas fa-user-minus"></i> Disable</a>
@@ -65,5 +61,5 @@
     <!-- /.card-body -->
 </div>
 
-<script src="Customer.js"></script>
 <?php include("../Layout/Footer_Iframe.php"); ?>
+<script src="Collateral.js"></script>

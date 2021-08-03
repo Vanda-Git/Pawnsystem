@@ -1,9 +1,7 @@
 <footer class="main-footer">
-  <strong>
-    Operation Date <font class="mytime"></font>
-  </strong>
+<strong>Copyright © 2021. All rights reserved. Vanda Solution.</strong>
   <div class="float-right d-none d-sm-inline-block">
-  <strong>Vanda Solution.<small>Demo Version</small></strong>
+  <strong>Demo Version 1.0.0</strong>
   
   </div>
 </footer>
