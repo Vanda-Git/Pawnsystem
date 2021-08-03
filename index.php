@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="dist/css/Login/login.css">
 <link rel="stylesheet" href="dist/css/Login/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="shortcut icon" href="Asset/System/V_logo.png" type="image/x-icon">
 <script src="dist/css/Login/bootstrap.bundle.min.js"></script>
 <script src="dist/css/Login/jquery.min.js"></script>
 <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
@@ -25,8 +26,10 @@
         <div class="row d-flex">
             <div class="col-lg-6">
                 <div class="card1 pb-5">
-                    <div class="row"> <img src="https://i.imgur.com/CXQmsmF.png" class="logo"> </div>
-                    <div class="row px-3 justify-content-center mt-4 mb-5 border-line"> <img src="https://i.imgur.com/uNGdWHi.png" class="image"> </div>
+                    <!-- <div class="row"> <img src="https://i.imgur.com/CXQmsmF.png" class="logo"> </div> -->
+                    <div class="row"> <img src="Asset/System/V_logo.png" class="logo"> </div>
+                    <!-- <div class="row px-3 justify-content-center mt-4 mb-5 border-line"> <img src="https://i.imgur.com/uNGdWHi.png" class="image"> </div> -->
+                    <div class="row px-3 justify-content-center mt-4 mb-5 border-line"> <img src="Asset/System/uNGdWHi.png" class="image"> </div>
                 </div>
             </div>
             <div class="col-lg-6">

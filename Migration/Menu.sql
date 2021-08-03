@@ -14,12 +14,22 @@ INSERT INTO sub_menus (id,rank, main_menu, caption, url, icon, class, note, crea
 INSERT INTO sub_menus (id,rank, main_menu, caption, url, icon, class, note, created_by, updated_by, date_created, date_updated) VALUES (13,1, 6, 'Collateral', '../Collaterals/', '<i class="far fa-circle nav-icon"></i>', 'nav-item', '', 1, null, '2021-07-10 21:58:30', null);
 
 truncate table main_menus;
-INSERT INTO main_menus (id,rank, caption, url, icon, class, note, created_by, updated_by, date_created, date_updated) VALUES (1,1, 'Customer Management', '#', '<i class="nav-icon fas fa-database"></i>', 'nav-item', '', 1, null, '2021-07-10 21:50:06', null);
-INSERT INTO main_menus (id,rank, caption, url, icon, class, note, created_by, updated_by, date_created, date_updated) VALUES (2,3, 'Credit Management', '#', '<i class="nav-icon fas fa-database"></i>', 'nav-item', '', 1, null, '2021-07-10 21:50:06', null);
-INSERT INTO main_menus (id,rank, caption, url, icon, class, note, created_by, updated_by, date_created, date_updated) VALUES (3,5, 'Report Management', '#', '<i class="nav-icon fas fa-database"></i>', 'nav-item', '', 1, null, '2021-07-10 21:50:06', null);
-INSERT INTO main_menus (id,rank, caption, url, icon, class, note, created_by, updated_by, date_created, date_updated) VALUES (4,4, 'User Management', '#', '<i class="nav-icon fas fa-database"></i>', 'nav-item', '', 1, null, '2021-07-10 21:50:06', null);
-INSERT INTO main_menus (id,rank, caption, url, icon, class, note, created_by, updated_by, date_created, date_updated) VALUES (5,6, 'Administrator', '#', '<i class="nav-icon fas fa-database"></i>', 'nav-item', '', 1, null, '2021-07-10 21:50:06', null);
-INSERT INTO main_menus (id,rank, caption, url, icon, class, note, created_by, updated_by, date_created, date_updated) VALUES (6,2, 'Collateral Management', '#', '<i class="nav-icon fas fa-database"></i>', 'nav-item', '', 1, null, '2021-07-10 21:50:06', null);
+INSERT INTO main_menus (id,rank, caption, url, icon, class, note, created_by, updated_by, date_created, date_updated) VALUES (1,1, 'Customer Management', '#', '<i class="nav-icon fas fa-users"></i>', 'nav-item', '', 1, null, '2021-07-10 21:50:06', null);
+INSERT INTO main_menus (id,rank, caption, url, icon, class, note, created_by, updated_by, date_created, date_updated) VALUES (2,3, 'Credit Management', '#', '<i class="nav-icon fas fa-file-invoice-dollar"></i>', 'nav-item', '', 1, null, '2021-07-10 21:50:06', null);
+INSERT INTO main_menus (id,rank, caption, url, icon, class, note, created_by, updated_by, date_created, date_updated) VALUES (3,5, 'Report Management', '#', '<i class="nav-icon fas fa-chart-pie"></i>', 'nav-item', '', 1, null, '2021-07-10 21:50:06', null);
+INSERT INTO main_menus (id,rank, caption, url, icon, class, note, created_by, updated_by, date_created, date_updated) VALUES (4,4, 'User Management', '#', '<i class="nav-icon fas fa-user"></i>', 'nav-item', '', 1, null, '2021-07-10 21:50:06', null);
+INSERT INTO main_menus (id,rank, caption, url, icon, class, note, created_by, updated_by, date_created, date_updated) VALUES (5,6, 'Administrator', '#', '<i class="nav-icon fas fa-users-cog"></i>', 'nav-item', '', 1, null, '2021-07-10 21:50:06', null);
+INSERT INTO main_menus (id,rank, caption, url, icon, class, note, created_by, updated_by, date_created, date_updated) VALUES (6,2, 'Collateral Management', '#', '<i class="nav-icon fas fa-id-card"></i>', 'nav-item', '', 1, null, '2021-07-10 21:50:06', null);
+
+
+
+
+
+
+
+
+
+
 
 truncate table pawn_system_db.permissions;
 INSERT INTO pawn_system_db.permissions (id, sub_menu, p_group, views, adds, updates, deletes, note, created_by, updated_by, date_created, date_updated) VALUES (1, '1', 1, 1, 1, 1, 1, '', 1, null, '2021-07-10 21:52:28', null);

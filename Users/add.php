@@ -7,7 +7,7 @@ if (isset($_POST["btn_save"])) {
     $user = $_POST["txt_user"];
     $email = $_POST["txt_email"];
     $position = $_POST["txt_position"];
-    $defaultPassword = $parameters["DefaultPassword"];
+    $defaultPassword = md5(md5($parameters["DefaultPassword"]));
 
     $sql = "INSERT INTO users ( first_name,
                                     last_name,
