@@ -1,7 +1,7 @@
 
 
-drop table pawn_system_db.d_customer;
-create table pawn_system_db.d_customer
+drop table d_customer;
+create table d_customer
 (
     id              int auto_increment primary key,
     code          varchar(255)                       unique not null,
@@ -54,7 +54,7 @@ create table pawn_system_db.d_customer
     date_updated  datetime                             null
 );
 
-create table pawn_system_db.group_mapping
+create table group_mapping
 (
     id           int auto_increment
         primary key,
@@ -66,7 +66,7 @@ create table pawn_system_db.group_mapping
     date_updated datetime                             null
 );
 
-create table pawn_system_db.`groups`
+create table `groups`
 (
     id           int auto_increment
         primary key,
@@ -78,8 +78,8 @@ create table pawn_system_db.`groups`
     date_updated datetime                             null
 );
 
-drop table pawn_system_db.main_menus;
-create table pawn_system_db.main_menus
+drop table main_menus;
+create table main_menus
 (
     id           int auto_increment
         primary key,
@@ -95,7 +95,7 @@ create table pawn_system_db.main_menus
     date_updated datetime                             null
 );
 
-create table pawn_system_db.parameters
+create table parameters
 (
     id           int auto_increment
         primary key,
@@ -108,7 +108,7 @@ create table pawn_system_db.parameters
     date_updated datetime                             null
 );
 
-create table pawn_system_db.permissions
+create table permissions
 (
     id           int auto_increment
         primary key,
@@ -125,7 +125,7 @@ create table pawn_system_db.permissions
     date_updated datetime                             null
 );
 
-create table pawn_system_db.positions
+create table positions
 (
     id           int auto_increment
         primary key,
@@ -137,7 +137,7 @@ create table pawn_system_db.positions
     date_updated datetime                             null
 );
 
-create table pawn_system_db.products
+create table products
 (
     id           int auto_increment
         primary key,
@@ -151,8 +151,8 @@ create table pawn_system_db.products
     date_updated datetime                             null
 );
 
-drop table pawn_system_db.sub_menus;
-create table pawn_system_db.sub_menus
+drop table sub_menus;
+create table sub_menus
 (
     id           int auto_increment
         primary key,
@@ -170,7 +170,7 @@ create table pawn_system_db.sub_menus
 );
 
 
-create table pawn_system_db.users
+create table users
 (
     id           int auto_increment
         primary key,
@@ -192,7 +192,7 @@ create table pawn_system_db.users
         unique (user)
 );
 
-create table pawn_system_db.d_master(
+create table d_master(
     id           int auto_increment
         primary key,
     code nvarchar(255),
