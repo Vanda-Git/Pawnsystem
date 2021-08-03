@@ -30,33 +30,10 @@ if (@$_GET["islogout"] == true) {
   <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+  
+  <!-- Pace Loading bar -->
+  <link rel="stylesheet" href="../dist/css/pace.css">
 
-  <style>
-    /* for refresh page */
-    .pace {
-      -webkit-pointer-events: none;
-      pointer-events: none;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      user-select: none;
-    }
-
-    .pace-inactive {
-      display: none;
-    }
-
-    .pace .pace-progress {
-      background: black;
-      position: fixed;
-      z-index: 2000;
-      top: 0;
-      right: 100%;
-      width: 100%;
-      height: 4px;
-    }
-
-    /* end */
-  </style>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed" data-panel-auto-height-mode="height">
@@ -68,11 +45,12 @@ if (@$_GET["islogout"] == true) {
       <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li class="nav-item">
+        
+        <li class="nav-item d-none d-sm-inline-block">
+          <a href="#" class="nav-link"><b>Operation Date <font class="mytime">01-Jan-1990 00:00:00</font></b></a>
         </li>
         <!-- <li class="nav-item d-none d-sm-inline-block">
-          <a href="index3.html" class="nav-link">Home</a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
           <a href="#" class="nav-link">Contact</a>
         </li> -->
       </ul>
@@ -86,28 +64,18 @@ if (@$_GET["islogout"] == true) {
             <span class="badge badge-warning navbar-badge">15</span>
           </a>
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <span class="dropdown-item dropdown-header">15 Notifications</span>
+            <span class="dropdown-item dropdown-header">4 Notifications</span>
             <div class="dropdown-divider"></div>
             <a href="#" class="dropdown-item">
-              <i class="fas fa-envelope mr-2"></i> 4 new messages
+              <i class="fas fa-envelope mr-2"></i> 4 Pending Loan
               <span class="float-right text-muted text-sm">3 mins</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-users mr-2"></i> 8 friend requests
-              <span class="float-right text-muted text-sm">12 hours</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-file mr-2"></i> 3 new reports
-              <span class="float-right text-muted text-sm">2 days</span>
             </a>
             <div class="dropdown-divider"></div>
             <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
           </div>
         </li>
         <li class="nav-item">
-          <a class="btn btn-link" href="?islogout=true" title="Password">
+          <a class="btn btn-link" href="#myModal" data-toggle="modal" title="Change Password">
             <i class="fas fa-lock "></i>
           </a>
         </li>
