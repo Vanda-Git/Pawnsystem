@@ -1,4 +1,4 @@
-create table pawn_system_db.migrations
+create table migrations
 (
     id       int auto_increment
         primary key,
