@@ -202,6 +202,32 @@ VALUES ('VC', 'COLLATERAL_TYPE', 'Vehicle Card', '', '1', '', '1');
 INSERT INTO d_master(code, name, caption, remark, status, note, created_by)
 VALUES ('UN', 'COLLATERAL_TYPE', 'Unsecure', '', '1', '', '1');
 
+delete
+from d_master
+where name = 'REPAYMENT_TERM';
+INSERT INTO d_master(code, name, caption, remark, status, note, created_by)
+VALUES ('W', 'REPAYMENT_TERM', 'Weekly', '', '1', '', '1');
+INSERT INTO d_master(code, name, caption, remark, status, note, created_by)
+VALUES ('M', 'REPAYMENT_TERM', 'Monthly', '', '1', '', '1');
 
-ALTER TABLE d_collaterals
-ADD document text;
+delete
+from d_master
+where name = 'REPAYMENT_TYPE';
+INSERT INTO d_master(code, name, caption, remark, status, note, created_by)
+VALUES ('EMP', 'REPAYMENT_TYPE', 'EMP', '', '1', '', '1');
+INSERT INTO d_master(code, name, caption, remark, status, note, created_by)
+VALUES ('EMI', 'REPAYMENT_TYPE', 'EMI', '', '1', '', '1');
+INSERT INTO d_master(code, name, caption, remark, status, note, created_by)
+VALUES ('CUS', 'REPAYMENT_TYPE', 'Custom schedule', '', '1', '', '1');
+
+delete
+from d_master
+where name = 'MEMBER_TYPE';
+INSERT INTO d_master(code, name, caption, remark, status, note, created_by)
+VALUES ('B', 'MEMBER_TYPE', 'Borrower', '', '1', '', '1');
+INSERT INTO d_master(code, name, caption, remark, status, note, created_by)
+VALUES ('CB', 'MEMBER_TYPE', 'Co-Borrower', '', '1', '', '1');
+INSERT INTO d_master(code, name, caption, remark, status, note, created_by)
+VALUES ('G', 'MEMBER_TYPE', 'Guarantor', '', '1', '', '1');
+INSERT INTO d_master(code, name, caption, remark, status, note, created_by)
+VALUES ('CG', 'MEMBER_TYPE', 'Co-Guarantor', '', '1', '', '1');
