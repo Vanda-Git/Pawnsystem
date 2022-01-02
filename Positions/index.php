@@ -1,6 +1,5 @@
-<?php include("../Layout/Header_Iframe.php"); ?>
-<?php include("../Config/Database.php"); ?>
-<?php include("../Config/Authorize.php"); ?>
+<?php include("../Layout/Header.php"); ?>
+
 
 <div class="card">
     <div class="card-header">
@@ -66,4 +65,4 @@
 </div>
 
 <script src="Position.js"></script>
-<?php include("../Layout/Footer_Iframe.php"); ?>
+<?php include("../Layout/Footer.php"); ?>

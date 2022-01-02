@@ -1,5 +1,5 @@
-<?php include("../Layout/Header_Iframe.php"); ?>
-<?php include("../Config/Database.php"); ?>
+<?php include("../Layout/Header.php"); ?>
+
 <?php
 $update_id = @$_GET["update_id"];
 
@@ -56,4 +56,4 @@ if (isset($_GET["update_id"])) {
     <!-- /.card-body -->
 </div>
 
-<?php include("../Layout/Footer_Iframe.php"); ?>
+<?php include("../Layout/Footer.php"); ?>

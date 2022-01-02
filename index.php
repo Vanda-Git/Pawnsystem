@@ -3,8 +3,8 @@
     if(!(isset($_SESSION["user_id"]) && !empty($_SESSION['user_id']))){
     }
     else{
-        echo "<script>window.parent.location.href='MainIframe/';</script>";
-        // header("Location: ../index.php");
+        // echo "<script>window.parent.location.href='Dashboard/';</script>";
+        header("Location: ../Dashboard.php");
     }
     if(isset($_POST["btn_login"])){
         $username = $_POST["user"];
