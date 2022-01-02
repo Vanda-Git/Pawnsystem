@@ -8,39 +8,46 @@ if (@$_GET["islogout"] == true) {
 }
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title><?= @$parameters["CompanyName"] ?> || Vanda Solution</title>
+  <title>AdminLTE 3 | Dashboard</title>
 
   <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet" href="../plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="../plugins/jqvmap/jqvmap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/adminlte.min.css">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="../plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-
-  <!-- DataTables -->
-  <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-  <link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-  
-  <!-- Icon title -->
-  <link rel="shortcut icon" href="../Asset/System/Logo.png" type="image/x-icon">
-
-  <!-- Pace Loading bar -->
-  <link rel="stylesheet" href="../dist/css/pace.css">
-
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="../plugins/daterangepicker/daterangepicker.css">
+  <!-- summernote -->
+  <link rel="stylesheet" href="../plugins/summernote/summernote-bs4.min.css">
+  <!-- Custome Style Funan -->
+  <!-- <link rel="stylesheet" href="../dist\css\custome_color.css"> -->
 </head>
 
-<body class="hold-transition sidebar-mini layout-fixed" data-panel-auto-height-mode="height">
+<body class="hold-transition sidebar-mini layout-fixed">
   <div class="wrapper">
+
+    <!-- Preloader -->
+    <div class="preloader flex-column justify-content-center align-items-center">
+      <img class="animation__shake" src="../dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+    </div>
 
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -51,13 +58,13 @@ if (@$_GET["islogout"] == true) {
         </li class="nav-item">
         
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="#" class="nav-link"><b><?=$_SESSION["user_firstname"]?> <?=$_SESSION["user_lastname"]?> | Operation Date <font class="mytime">01-Jan-1990 00:00:00</font></b></a>
+          <a href="#" class="nav-link"><b><?=@$_SESSION["user_firstname"]?> <?=@$_SESSION["user_lastname"]?> | Operation Date <font class="mytime">01-Jan-1990 00:00:00</font></b></a>
         </li>
         <!-- <li class="nav-item d-none d-sm-inline-block">
           <a href="#" class="nav-link">Contact</a>
         </li> -->
       </ul>
-
+      
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
         <!-- Notifications Dropdown Menu -->
@@ -78,7 +85,7 @@ if (@$_GET["islogout"] == true) {
           </div>
         </li>
         <li class="nav-item">
-          <a class="btn btn-link" href="#myModal" data-toggle="modal" title="Change Password">
+          <a class="btn btn-link" href="../ChangePassword/" title="Change Password">
             <i class="fas fa-lock "></i>
           </a>
         </li>
@@ -107,10 +114,9 @@ if (@$_GET["islogout"] == true) {
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-light-lime elevation-4">
-
+    <aside class="main-sidebar sidebar-light-dark elevation-4">
       <!-- Sidebar -->
-      <div class="sidebar">
+      <div class="sidebar no_padding_left no_padding_right">
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
@@ -178,3 +184,7 @@ if (@$_GET["islogout"] == true) {
       </div>
       <!-- /.sidebar -->
     </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->

@@ -1,5 +1,5 @@
-<?php include("../Layout/Header_Iframe.php"); ?>
-<?php include("../Config/Database.php"); ?>
+<?php include("../Layout/Header.php"); ?>
+
 <?php
 
     $id = @$_GET["update_id"];
@@ -307,5 +307,5 @@
     <!-- /.card-body -->
 </div>
 
-<?php include("../Layout/Footer_Iframe.php"); ?>
+<?php include("../Layout/Footer.php"); ?>
 <script src="Customer.js"></script>

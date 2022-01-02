@@ -1,6 +1,5 @@
-<?php include("../Layout/Header_Iframe.php"); ?>
-<?php include("../Config/Database.php"); ?>
-<?php include("../Config/Authorize.php"); ?>
+<?php include("../Layout/Header.php"); ?>
+
 <?php
 $datas_parameter = [];
     $sql = "select
@@ -60,4 +59,4 @@ $datas_parameter = [];
         </div>
     </form>
 </div>
-<?php include("../Layout/Footer_Iframe.php"); ?>
+<?php include("../Layout/Footer.php"); ?>

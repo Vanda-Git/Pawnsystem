@@ -1,5 +1,5 @@
-<?php include("../Layout/Header_Iframe.php"); ?>
-<?php include("../Config/Database.php"); ?>
+<?php include("../Layout/Header.php"); ?>
+
 <?php
 if (isset($_POST["btn_save"])) {
     $code = $_POST["txt_code"];
@@ -59,4 +59,4 @@ if (isset($_POST["btn_save"])) {
     <!-- /.card-body -->
 </div>
 
-<?php include("../Layout/Footer_Iframe.php"); ?>
+<?php include("../Layout/Footer.php"); ?>

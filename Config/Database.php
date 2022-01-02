@@ -92,7 +92,7 @@ function authorize($con, $username, $password)
                         $_SESSION["user_lastname"] = $row["last_name"];
                         $_SESSION["user_position"] = $row["position"];
                         $_SESSION["user_group"] = $row["user_group"];
-                        header("Location: MainIframe/");
+                        header("Location: Dashboard/");
                 } else {
                         echo '<div class="alert alert-danger alert-dismissible">
                                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>

@@ -1,6 +1,4 @@
-<?php include("../Layout/Header_Iframe.php"); ?>
-<?php include("../Config/Database.php"); ?>
-<?php include("../Config/Authorize.php"); ?>
+<?php include("../Layout/Header.php"); ?>
 <?php
 $datas_permission = [];
 if (isset($_POST["btn_save"])) {
@@ -63,4 +61,4 @@ if (isset($_POST["btn_save"])) {
         </div>
     </form>
 </div>
-<?php include("../Layout/Footer_Iframe.php"); ?>
+<?php include("../Layout/Footer.php"); ?>
