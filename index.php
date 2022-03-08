@@ -4,7 +4,7 @@
     }
     else{
         // echo "<script>window.parent.location.href='Dashboard/';</script>";
-        header("Location: ../Dashboard.php");
+        header("Location: Dashboard/");
     }
     if(isset($_POST["btn_login"])){
         $username = $_POST["user"];
