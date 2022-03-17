@@ -66,6 +66,9 @@
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
   <script src="../dist/js/pages/dashboard.js"></script>
 
+  <script src="../dist/js/sweetalert.min.js"></script>
+  <script src="../dist/js/notify.min.js"></script>
+
 <script>
   $(function() {
     $("#example1").DataTable({
