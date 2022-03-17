@@ -1,9 +1,10 @@
 <?php
 if(isset($_POST['btn_start'])){
-    $servername = "sql110.epizy.com";
-    $username = "epiz_29280825";
-    $password = "z6is2aSmUY6KIy";
-    $database = "epiz_29280825_pawn_system_db";
+
+    $servername = "sql206.epizy.com";
+    $username = "epiz_30719907";
+    $password = "1X7l3sB9wvq60sp";
+    $database = "epiz_30719907_pawn_system_db";
 
     if($_SERVER['SERVER_NAME'] == 'project.localhost' || $_SERVER['SERVER_NAME'] == 'localhost'){
             $servername = "localhost";
@@ -18,7 +19,7 @@ if(isset($_POST['btn_start'])){
     date_default_timezone_set('Asia/Bangkok');
 
     $pin = $_POST['txt_pin'];
-    if($pin == "022002"){
+    if(md5($pin) == "7d0a65d5e28401ccd9db2b4ab2cfa0c3"){
 
         $existing_file = "select filename from migrations where status = 1";
         $results = $conn->query($existing_file);
