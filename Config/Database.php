@@ -6,7 +6,7 @@ date_default_timezone_set("Asia/Bangkok");
 $servername = "sql206.epizy.com";
 $username = "epiz_30719907";
 $password = "1X7l3sB9wvq60sp";
-$database = "epiz_30719907_pawn_system_db";
+$database = "epiz_31889406_pawn_system_db";
 
 $system_url = $_SERVER['PHP_SELF']; //returns the current URL
 $system_parts = explode("/", $system_url);
