@@ -120,6 +120,36 @@ function create($con, $query)
                             </div>';
         }
 }
+function createWithCustomMessage($con, $query,$mess)
+{
+        if ($con->query($query) === TRUE) {
+                echo '<div class="alert alert-success alert-dismissible">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                <strong>Success!</strong>'.$mess.'.
+                            </div>';
+        } else {
+                echo '<div class="alert alert-danger alert-dismissible">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                <strong>' . $query . $con->connect_error . '</strong>Please contact to system admin.
+                            </div>';
+        }
+}
+function createWithNoMessage($con, $query)
+{
+        if ($con->query($query) === TRUE) {
+                return 1;
+        } else {
+                return 0;
+        }
+}
+function create_getId($con, $query)
+{
+        if ($con->query($query) === TRUE) {
+                return $con->insert_id;
+        } else {
+                return 0;
+        }
+}
 function changePassword($con, $query)
 {
         $con->query($query);
@@ -148,6 +178,14 @@ function update($con, $query)
                                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                 <strong>' . $con->connect_error . '</strong>Please contact to system admin.
                             </div>';
+                return 0;
+        }
+}
+function updateWithNoMessage($con, $query)
+{
+        if ($con->query($query) === TRUE) {
+                return 1;
+        } else {
                 return 0;
         }
 }
@@ -201,5 +239,38 @@ function upload_image($file, $path)
                 } else {
                         return "0";
                 }
+        }
+}
+function Generate_customer_gc(){
+        $CustomerGroupCode = "GC".date("Ymdhis");
+        return $CustomerGroupCode;
+}
+function Generate_customer_code(){
+        $CustomerCode = "CUS".date("Ymdhis");
+        return $CustomerCode;
+}
+function Generate_collateral_code(){
+        $CollateralCode = "COL".date("Ymdhis");
+        return $CollateralCode;
+}
+function Generate_credit_code(){
+        $CreditCode = "CRD".date("Ymdhis");
+        return $CreditCode;
+}
+
+function Get_CTM_Id($conn,$ctm_type,$ctmcd){
+        if($ctm_type == "S"){
+                return fetch_single($conn, "select id from d_customer where code='$ctmcd'")[0];
+        }
+        else{
+                return fetch_single($conn, "select id from d_group where groupcd='$ctmcd'")[0];
+        }
+}
+function Get_CTM_Code($conn,$ctm_type,$id){
+        if($ctm_type == "S"){
+                return fetch_single($conn, "select code from d_customer where id='$id'")[0];
+        }
+        else{
+                return fetch_single($conn, "select groupcd from d_group where id='$id'")[0];
         }
 }

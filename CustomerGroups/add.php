@@ -2,19 +2,38 @@
 
 <?php
 if (isset($_POST["btn_save"])) {
-    $title = $_POST["txt_title"];
-    $note = $_POST["txt_note"];
-    $user = $_SESSION["user_id"];
 
-    $sql = "INSERT INTO groups ( title,
-                                    note,
-                                    created_by
+    $cus_codes = $_POST["txt_cus_code"];
+    $cust_types = $_POST["txt_cust_type"];
+    $user = $_SESSION["user_id"];
+    $CustomerGroupCode = Generate_customer_gc();
+
+    $sql = "INSERT INTO d_group (groupcd,created_by) values ('$CustomerGroupCode','$user')";
+    $mId = create_getId($conn,$sql);
+    if($mId != 0){
+
+        $sqlDetail = "INSERT INTO d_group_detail ( customer_id,
+                                        groupid,
+                                        groupcd,
+                                        member_type,
+                                        status,
+                                        created_by
                                     )
-                VALUES ('" . $title . "',
-                        '" . $note . "',
-                        '" . $user . "'
-                    );";
-    $result = create($conn, $sql);
+                                VALUES";
+        foreach ($cus_codes as $key => $value) {
+            # code...
+            $sqlDetail .=  "(
+                            '" . $value . "',
+                            '".$mId."',
+                            '$CustomerGroupCode',
+                            '" . $cust_types[$key] . "',
+                            'N',
+                            '" . $user . "'
+                        ),";
+        }
+        $sqlDetail = rtrim($sqlDetail,',');
+        $resultDetail = create($conn,$sqlDetail);
+    }
 }
 ?>
 <div class="card">
@@ -28,16 +47,16 @@ if (isset($_POST["btn_save"])) {
     <!-- /.card-header -->
     <div class="card-body">
         <form method="POST">
-            <div class=" parent_row">
+            <div class="parent_row">
                 <div class="row main_row">
                     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                    <label for="txt_cus_code">Customer Code<i class="text-danger">(*)</i></label>
-                        <select name="txt_cus_code" id="txt_cus_code" class="form-control txt_cus_code" required>
+                        <label for="txt_cus_code">Customer Code<i class="text-danger">(*)</i></label>
+                        <select name="txt_cus_code[]" id="txt_cus_code" class="form-control txt_cus_code" required>
                             <option value="">---Select item---</option>
                             <?php
                             $datas = fetch_all($conn, "select id,code,first_name_en,last_name_en from d_customer where status='N';");
                             foreach ($datas as $key => $data) {
-                            ?>
+                                ?>
                                 <option value="<?= $data["id"] ?>"><?= $data["code"] . '-' . $data["first_name_en"] . ' ' . $data["last_name_en"] ?></option>
                             <?php
                             }
@@ -45,15 +64,19 @@ if (isset($_POST["btn_save"])) {
                         </select>
                     </div>
                     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                        <label for="txt_cust_type">Customer Type<i class="text-danger">(*)</i></label>
-                        <select name="txt_cust_type" id="txt_cust_type" class="form-control txt_cust_type" required>
+                        <label for="txt_cust_type" class="col-12">
+                            Customer Type<i class="text-danger">(*)</i>
+                            <i class='fa fa-times-circle text-danger' onclick="remove_this_row(this)" style="float:right;"></i>
+                        </label>
+                        
+                        <select name="txt_cust_type[]" id="txt_cust_type" class="form-control txt_cust_type" required>
                             <option value="">---Select item---</option>
                             <?php
                             $datas = get_master($conn, "CUST_TYPE");
                             foreach ($datas as $key => $data) {
-                            ?>
+                                ?>
                                 <option value="<?= $data["code"] ?>"><?= $data["caption"] ?></option>
-                            <?php
+                                <?php
                             }
                             ?>
                         </select>

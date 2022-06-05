@@ -11,8 +11,7 @@ create table d_group(
 );
 
 create table d_credit(
-    id           int auto_increment
-        primary key,
+    id           int auto_increment primary key,
     group_id int,
     cycle int,
     request_amount double,

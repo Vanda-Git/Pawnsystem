@@ -45,9 +45,9 @@ if (@$_GET["islogout"] == true) {
   <div class="wrapper">
 
     <!-- Preloader -->
-    <div class="preloader flex-column justify-content-center align-items-center">
+    <!-- <div class="preloader flex-column justify-content-center align-items-center">
       <img class="animation__shake" src="../dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
-    </div>
+    </div> -->
 
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -87,6 +87,11 @@ if (@$_GET["islogout"] == true) {
         <li class="nav-item">
           <a class="btn btn-link" href="../ChangePassword/" title="Change Password">
             <i class="fas fa-lock "></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-link" href="../Dashboard/" title="Home Page">
+            <i class="fas fa-home "></i>
           </a>
         </li>
         <li class="nav-item">

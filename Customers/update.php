@@ -163,7 +163,7 @@
                     <input type="text" class="form-control txt_email" name="txt_email" id="txt_email" value="<?=$data_single_customer["email"]?>">
                 </div>
                 <div class="col-xs-6 col-sm-2 col-md-2 col-lg-2">
-                    <label for="txt_document">ID Document</label>
+                    <label for="txt_document">ID Document<i class="text-danger">(*)</i></label>
                     <input type="hidden" name="hidden_document" value="<?=$data_single_customer["id1_document"]?>">
                     <input type="file" class="form-control txt_document" name="txt_id_document" id="txt_document">
                 </div>

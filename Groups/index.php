@@ -33,10 +33,10 @@
                                                 t1.date_created
                                             from groups t1
                                             inner join users t2 on t1.created_by = t2.id");
-                foreach($datas as $data){
+                foreach($datas as $key => $data){
                 ?>
                         <tr>
-                            <td><?= @$data['no'] ?></td>
+                            <td><?= @$key+1 ?></td>
                             <td><?= @$data["title"] ?></td>
                             <td><?= @$data["note"] ?></td>
                             <td><?= @$data["fullname"] ?></td>

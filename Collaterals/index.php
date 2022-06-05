@@ -36,10 +36,10 @@
                                             t1.document,
                                             t1.date_created
                                         from d_collaterals t1 WHERE status = 'N';");
-                foreach($datas as $data){
+                foreach($datas as $key => $data){
                 ?>
                         <tr>
-                            <td><?= @$data['no'] ?></td>
+                            <td><?= @$key+1 ?></td>
                             <td><?= @$data["code"] ?></td>
                             <td><?= @$data["owner_name"] ?></td>
                             <td><?= @$data["value"] ?></td>
