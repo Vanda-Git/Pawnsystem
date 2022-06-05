@@ -10,6 +10,7 @@ if (isset($_POST["btn_save"])) {
     $owner = $_POST["txt_owner"];
     $location = $_POST["txt_location"];
     $remark = $_POST["txt_remark"];
+    $CollateralCode = Generate_collateral_code();
 
     $create_by = $_SESSION["user_id"];
 
@@ -33,7 +34,7 @@ if (isset($_POST["btn_save"])) {
                 )
                 VALUES
                 (
-                DATE_FORMAT(NOW(),'%Y%m%d%h%i%s'),
+                '".$CollateralCode."',
                 '$coll_type',
                 '$customer',
                 '$owner',

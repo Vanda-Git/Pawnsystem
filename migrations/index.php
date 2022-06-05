@@ -33,7 +33,7 @@ if(isset($_POST['btn_start'])){
                 // Create connection
                 $conn1 = new mysqli($servername, $username, $password, $database);
             
-                if($filename != "index.php" && !(array_search($filename, $filenames) > -1)){
+                if($filename != "index.php" && $filename !="generate_mgfile.bat" && !(array_search($filename, $filenames) > -1)){
                     
                     $myfile = fopen($filename, "r");
                     $sql = fread($myfile,filesize($filename));

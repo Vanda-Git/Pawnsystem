@@ -29,6 +29,7 @@
         $total_income = $_POST["txt_total_income"];
         $coid = $_POST["txt_coid"];
         $create_by = $_SESSION["user_id"];
+        $CustomerCode =Generate_customer_code();
         
         //check upload document
         $id1_document = upload_image($_FILES["txt_id_document"],"Customers/ID/");
@@ -68,7 +69,7 @@
                 )
                 VALUES
                 (
-                DATE_FORMAT(NOW(),'%Y%m%d%h%i%s'),
+                '".$CustomerCode."',
                 '".$first_name_en."',
                 '".$last_name_en."',
                 '".$first_name_kh."',
@@ -182,8 +183,8 @@
                     <input type="text" class="form-control txt_email" name="txt_email" id="txt_email">
                 </div>
                 <div class="col-xs-6 col-sm-2 col-md-2 col-lg-2">
-                    <label for="txt_document">ID Document</label>
-                    <input type="file" class="form-control txt_document" name="txt_id_document" id="txt_document">
+                    <label for="txt_document">ID Document <i class="text-danger">(*)</i></label>
+                    <input type="file" class="form-control txt_document" name="txt_id_document" required id="txt_document">
                 </div>
             </div>
             <div class="row">

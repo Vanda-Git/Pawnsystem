@@ -14,36 +14,48 @@
         <table id="example1" class="table table-bordered table-striped">
             <thead>
                 <tr>
-                    <th>Nº</th>
-                    <th>Title</th>
-                    <th>Note</th>
-                    <th>Created By</th>
+                    <th>No</th>
+                    <th>Group Code</th>
+                    <th>Customer Name</th>
+                    <th>Joint Member</th>
+                    <th>Member Type</th>
+                    <th>Status</th>
                     <th>Date</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                $datas = fetch_all($conn,"  select
-                                                t1.id no,
-                                                t1.id,
-                                                t1.title,
-                                                t1.note,
-                                                concat(t2.first_name,' ',t2.last_name) as fullname,
-                                                t1.date_created
-                                            from groups t1
-                                            inner join users t2 on t1.created_by = t2.id");
-                foreach($datas as $data){
+                $datas = fetch_all($conn,"select
+                                                t0.id id,
+                                                t1.groupcd,
+                                                count(t1.customer_id) memberAmount,
+                                                t2.first_name_en,
+                                                t2.last_name_en,
+                                                t3.caption,
+                                                t1.status,
+                                                t1.date_created date
+                                        from
+                                        d_group as t0
+                                        inner join d_group_detail as t1 on t1.groupId = t0.id
+                                        left join d_customer t2 on t1.customer_id = t2.id
+                                        inner join pawn_system_db.d_master t3 on t1.member_type=t3.code and t3.name='CUST_TYPE'
+                                        where t0.status='N'
+                                        group by t1.groupcd
+                                        ");
+                foreach($datas as $key => $data){
                 ?>
                         <tr>
-                            <td><?= @$data['no'] ?></td>
-                            <td><?= @$data["title"] ?></td>
-                            <td><?= @$data["note"] ?></td>
-                            <td><?= @$data["fullname"] ?></td>
-                            <td><?= @$data["date_created"] ?></td>
+                            <td><?= @$key+1 ?></td>
+                            <td><?= @$data['groupcd'] ?></td>
+                            <td><?= @$data["first_name_en"] ?> <?= @$data["last_name_en"] ?></td>
+                            <td><?= @$data["memberAmount"] ?> People</td>
+                            <td><?= @$data["caption"] ?></td>
+                            <td><?= @$data["status"] ?></td>
+                            <td><?= @$data["date"] ?></td>
                             <td>
-                                <a href="update.php?update_id=<?=@$data["id"]?>" class="btn btn-warning btn-xs btn_update"><i class="fas fa-edit"></i> Edit</a>
-                                <a href="javascript:void(0)" onclick='remove(<?=@$data["id"]?>,this)' class="btn btn-danger btn-xs btn_delete"><i class="fas fa-user-minus"></i> Disable</a>
+                                <a href="update.php?update_id=<?=@$data["id"]?>&&groupCd=<?=@$data["groupcd"]?>" class="btn btn-warning btn-xs btn_update"><i class="fas fa-edit"></i> Edit</a>
+                                <a href="javascript:void(0)" onclick='remove("<?=@$data["id"]?>",this)' class="btn btn-danger btn-xs btn_delete"><i class="fas fa-user-minus"></i> Disable</a>
                             </td>
                         </tr>
                 <?php
@@ -63,6 +75,5 @@
     </div>
     <!-- /.card-body -->
 </div>
-
-<script src="Group.js"></script>
+<script src="CustomerGroup.js"></script>
 <?php include("../Layout/Footer.php"); ?>

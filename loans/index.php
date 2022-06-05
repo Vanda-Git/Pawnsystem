@@ -15,37 +15,53 @@
             <thead>
                 <tr>
                     <th>Nº</th>
-                    <th>Code</th>
-                    <th>Owner</th>
-                    <th>Value</th>
-                    <th>Location</th>
-                    <th>Date</th>
-                    <th>Document</th>
+                    <th>Credit Account</th>
+                    <th>Customer Name</th>
+                    <th>Request Amount</th>
+                    <th>Repayment Mode</th>
+                    <th>Submit Date</th>
+                    <th>Credit Officer</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                $datas = fetch_all($conn,"  select
-                                            t1.id no,
-                                            t1.id,
-                                            t1.code,
-                                            t1.owner_name,
-                                            t1.value,
-                                            t1.location,
-                                            t1.document,
-                                            t1.date_created
-                                        from d_collaterals t1 WHERE status = 'N';");
-                foreach($datas as $data){
+                $datas = fetch_all($conn,"
+                select
+                        t1.id,
+                       t1.code,
+                       t3.first_name_en,
+                       t3.last_name_en,
+                       FORMAT(t1.request_amount,2) request_amount,
+                       t1.currency,
+                       t5.caption Repay_Type,
+                       t1.date_created,
+                       t6.caption co
+                from
+                d_credit as t1
+                inner join
+                    (
+                    select id,id cusId,'S' ctmType from d_customer
+                        union all
+                    select dg.id,customer_id cusId,'J' ctmType from d_group as dg
+                    inner join d_group_detail dgd on dg.id = dgd.groupId
+                    where dgd.member_type = '1'
+                    ) as t2 on t1.ctmType = t2.ctmType and t1.customerId=t2.id
+                inner join d_customer as t3 on t2.cusId = t3.id
+                inner join d_master as t4 on t1.ctmType = t4.code and t4.name='CTM_TYPE'
+                inner join d_master as t5 on t1.repayment_type = t5.code and t5.name='REPAYMENT_TYPE'
+                inner join d_master as t6 on t1.co_id = t6.code and t6.name='CO'
+                WHERE t1.status in ('N','P')");
+                foreach($datas as $key => $data){
                 ?>
                         <tr>
-                            <td><?= @$data['no'] ?></td>
+                            <td><?= @$key+1 ?></td>
                             <td><?= @$data["code"] ?></td>
-                            <td><?= @$data["owner_name"] ?></td>
-                            <td><?= @$data["value"] ?></td>
-                            <td><?= @$data["location"] ?></td>
+                            <td><?= @$data["first_name_en"] ?> <?= @$data["last_name_en"] ?></td>
+                            <td><?= @$data["request_amount"] ?><?= @$data["currency"]=="USD"?"$":"Real" ?></td>
+                            <td><?= @$data["Repay_Type"] ?></td>
                             <td><?= @$data["date_created"] ?></td>
-                            <td><a target="_blank" href="../Asset/Collaterals/<?= @$data["document"] ?>"><?= @$data["document"]?></a></td>
+                            <td><?= @$data["co"] ?></td>
                             <td>
                                 <a href="update.php?update_id=<?=@$data["id"]?>" class="btn btn-warning btn-xs btn_update"><i class="fas fa-edit"></i> Edit</a>
                                 <a href="javascript:void(0)" onclick='remove(<?=@$data["id"]?>,this)' class="btn btn-danger btn-xs btn_delete"><i class="fas fa-user-minus"></i> Disable</a>
@@ -61,4 +77,4 @@
 </div>
 
 <?php include("../Layout/Footer.php"); ?>
-<script src="Collateral.js"></script>
+<script src="Loan.js?v=1"></script>

@@ -39,10 +39,10 @@
                                                 t1.co_id,
                                                 t1.id1_document
                                             from d_customer t1 WHERE t1.status='N';");
-                foreach($datas as $data){
+                foreach($datas as $key => $data){
                 ?>
                         <tr>
-                            <td><?= @$data['no'] ?></td>
+                            <td><?= @$key+1 ?></td>
                             <td><?= @$data["code"] ?></td>
                             <td><?= @$data["fullname_en"] ?></td>
                             <td><?= @$data["fullname_kh"] ?></td>
