@@ -3,8 +3,8 @@ if(isset($_POST['btn_start'])){
 
     $servername = "sql206.epizy.com";
     $username = "epiz_30719907";
-    $password = "1X7l3sB9wvq60sp";
-    $database = "epiz_30719907_pawn_system_db";
+    $password = "3ZdH8QEcQeFi";
+    $database = "epiz_31889406_pawn_system_db";
 
     if($_SERVER['SERVER_NAME'] == 'project.localhost' || $_SERVER['SERVER_NAME'] == 'localhost'){
             $servername = "localhost";
