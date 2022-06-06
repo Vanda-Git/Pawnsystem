@@ -4,7 +4,7 @@ ob_start();
 date_default_timezone_set("Asia/Bangkok");
 
 $servername = "sql201.epizy.com ";
-$username = "epiz_30719907";
+$username = "epiz_31889406";
 $password = "3ZdH8QEcQeFi";
 $database = "epiz_31889406_pawn_system_db";
 
