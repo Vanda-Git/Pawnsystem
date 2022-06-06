@@ -39,7 +39,7 @@
                                         d_group as t0
                                         inner join d_group_detail as t1 on t1.groupId = t0.id
                                         left join d_customer t2 on t1.customer_id = t2.id
-                                        inner join pawn_system_db.d_master t3 on t1.member_type=t3.code and t3.name='CUST_TYPE'
+                                        inner join d_master t3 on t1.member_type=t3.code and t3.name='CUST_TYPE'
                                         where t0.status='N'
                                         group by t1.groupcd
                                         ");
@@ -75,5 +75,5 @@
     </div>
     <!-- /.card-body -->
 </div>
-<script src="CustomerGroup.js"></script>
 <?php include("../Layout/Footer.php"); ?>
+<script src="CustomerGroup.js"></script>
