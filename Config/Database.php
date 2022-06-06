@@ -20,9 +20,9 @@ if($_SERVER['SERVER_NAME'] == 'project.localhost' || $_SERVER['SERVER_NAME'] == 
         $access_module = $system_parts[2];
 }
 
-// ini_set('display_errors', 1);
-// ini_set('display_startup_errors', 1);
-// error_reporting(E_ALL);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $database);
