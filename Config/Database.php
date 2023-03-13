@@ -10,15 +10,16 @@ $database = "epiz_31889406_pawn_system_db";
 
 $system_url = $_SERVER['PHP_SELF']; //returns the current URL
 $system_parts = explode("/", $system_url);
-$access_module = $system_parts[1];
+$access_module = $system_parts[1]."/".$system_parts[2];
 
 if($_SERVER['SERVER_NAME'] == 'project.localhost' || $_SERVER['SERVER_NAME'] == 'localhost'){
         $servername = "localhost";
         $username = "root";
         $password = "";
         $database = "pawn_system_db";
-        $access_module = $system_parts[2];
+        $access_module = @$system_parts[2]."/".@$system_parts[3];
 }
+
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);

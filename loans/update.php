@@ -16,7 +16,6 @@
         $purpose = $_POST["txt_purpose"];
         $admin_fee = $_POST["txt_admin_fee"];
         $other_fee = $_POST["txt_other_fee"];
-        $code = Generate_credit_code();
         $status = 'P';
         $note = $_POST["txt_remark"];
         $co_id = $_POST["txt_coid"];
@@ -41,7 +40,6 @@
                                 , purpose = '".$purpose."'
                                 , admin_fee = '".$admin_fee."'
                                 , other_fee = '".$other_fee."'
-                                , code = '".$code."'
                                 , status = '".$status."'
                                 , note = '".$note."'
                                 , co_id = '".$co_id."'
