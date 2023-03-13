@@ -3,10 +3,11 @@ session_start();
 ob_start();
 date_default_timezone_set("Asia/Bangkok");
 
-$servername = "sql201.epizy.com";
+//Update by Vanda 13032023
+$servername = "sql109.epizy.com";
 $username = "epiz_31889406";
-$password = "3ZdH8QEcQeFi";
-$database = "epiz_31889406_pawn_system_db";
+$password = "PCcjWzekerMyi";
+$database = "epiz_33785655_pawn_system_db";
 
 $system_url = $_SERVER['PHP_SELF']; //returns the current URL
 $system_parts = explode("/", $system_url);
