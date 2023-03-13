@@ -7,7 +7,7 @@ $sql = "SELECT
           SUM(t1.deletes) as deletes
         FROM permissions t1
         inner join sub_menus t2 on t1.sub_menu = t2.id
-        where t1.p_group in ($group) and t2.url = '../" . $access_module . "/'";
+        where t1.p_group in ($group) and t2.url = '../" . $access_module."'";
 
 $datas_permission = fetch_single($conn, $sql);
 
