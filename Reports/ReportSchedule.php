@@ -174,10 +174,10 @@ if (isset($_POST["btn_search"])) {
                             $tpay = 0;
                             $tprint = 0;
                             $tint = 0;
-                            foreach ($datas as $data) {
-                                $tpay += $data["payment"];
-                                $tprint += $data["principle"];
-                                $tint += $data["interest"];
+                            foreach (@$datas as $data) {
+                                $tpay += @$data["payment"];
+                                $tprint += @$data["principle"];
+                                $tint += @$data["interest"];
                             ?>
                                 <tr>
                                     <td><?= @$data["due_number"] ?></td>
