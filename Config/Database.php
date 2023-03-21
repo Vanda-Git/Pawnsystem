@@ -5,7 +5,7 @@ date_default_timezone_set("Asia/Bangkok");
 
 //Update by Vanda 13032023
 $servername = "sql109.epizy.com";
-$username = "epiz_31889406";
+$username = "epiz_33785655";
 $password = "PCcjWzekerMyi";
 $database = "epiz_33785655_pawn_system_db";
 
@@ -31,10 +31,9 @@ $conn = new mysqli($servername, $username, $password, $database);
 mysqli_set_charset($conn, 'utf8');
 date_default_timezone_set('Asia/Bangkok');
 
-// Check connection
-//  if ($conn->connect_error) {
-//    die("Connection failed: " . $conn->connect_error);
-//  }
+ if ($conn->connect_error) {
+   die("Connection failed: " . $conn->connect_error);
+ }
 
 
 ?>
