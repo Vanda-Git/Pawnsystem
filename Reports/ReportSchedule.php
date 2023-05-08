@@ -13,6 +13,46 @@ if (isset($_POST["btn_search"])) {
                     inner join d_credit t2 on t1.credit_id = t2.id
             where t2.code = '".$CrdCode."'";
     $datas = fetch_all($conn, $sql);
+
+    $sql1="select
+                crd.cycle,
+                crd.code crdCode,
+                dc.first_name_kh,
+                dc.last_name_kh,
+                dc.code cusCode,
+                crd.dis_date,
+                DATE_ADD(crd.dis_date, INTERVAL crd.tenor MONTH) MaturityDate,
+                crd.tenor,
+                DATEDIFF(crd.dis_date, DATE_ADD(crd.dis_date, INTERVAL crd.tenor MONTH)) tenorAsDay,
+                crd.purpose,
+                dc.address_line1,
+                FORMAT(crd.admin_fee, 2) admin_fee,
+                FORMAT(crd.interest/12, 2) interest,
+                crd.currency
+            from d_credit crd
+            inner join d_group_detail dgd on crd.customerId = dgd.groupId and dgd.member_type='1'
+            inner join d_customer dc on dgd.customer_id = dc.id
+            where crd.code='CRD20220822094242' and ctmType='J'
+            union all
+            select
+                crd.cycle,
+                crd.code crdCode,
+                dc.first_name_kh,
+                dc.last_name_kh,
+                dc.code cusCode,
+                crd.dis_date,
+                DATE_ADD(crd.dis_date, INTERVAL crd.tenor MONTH) MaturityDate,
+                crd.tenor,
+                DATEDIFF(crd.dis_date, DATE_ADD(crd.dis_date, INTERVAL crd.tenor MONTH)) tenorAsDay,
+                crd.purpose,
+                dc.address_line1,
+                FORMAT(crd.admin_fee, 2) admin_fee,
+                FORMAT(crd.interest/12, 2) interest,
+                crd.currency
+            from d_credit crd
+            inner join d_customer dc on crd.customerId = dc.id
+            where crd.code='CRD20220822094242' and ctmType='S'";
+    @$data1 = fetch_single($conn, $sql1);
 }
 
 
@@ -42,16 +82,16 @@ if (isset($_POST["btn_search"])) {
             </div>
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                    <p>ការិយាល័យ</p>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                    <p>: 0002- សាខាការិយាល័យកណ្តាល</p>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                     <p>កម្ចីវគ្គទី</p>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                    <p>: 1</p>
+                    <p>: <?=@$data1["cycle"]?></p>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                    <p>អតិថិជនឈ្មោះ​</p>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                    <p>: <?=@$data1["last_name_kh"]?> <?=@$data1["first_name_kh"]?></p>
                 </div>
             </div>
             <div class="row">
@@ -59,27 +99,13 @@ if (isset($_POST["btn_search"])) {
                     <p>គណនីអតិថិជន​</p>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                    <p>: 0002-02-52138-00241-6</p>
+                    <p>: <?=@$data1["crdCode"]?></p>
                 </div>
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                    <p>អតិថិជនឈ្មោះ​</p>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                    <p>: ប្រុស វណ្ណនីដា</p>
-                </div>
-            </div>
-            <div class="row">
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                     <p>លេខអតិថិជន</p>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                    <p>: 0002-1-011086</p>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                    <p>លេខកូដ & ឈ្មោះមេក្រុម</p>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                    <p>: </p>
+                    <p>: <?=@$data1["cusCode"]?></p>
                 </div>
             </div>
             <div class="row">
@@ -87,13 +113,13 @@ if (isset($_POST["btn_search"])) {
                     <p>កាលបរិច្ឆេទនៃកម្ចី</p>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                    <p>: 30-09-2021</p>
+                    <p>: <?=@$data1["dis_date"]?></p>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                     <p>កាលអវសាននៃកម្ចី</p>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                    <p>: 26-09-2024</p>
+                    <p>: <?=@$data1["MaturityDate"]?></p>
                 </div>
             </div>
             <div class="row">
@@ -107,7 +133,7 @@ if (isset($_POST["btn_search"])) {
                     <p>រយៈពេលខ្ចី</p>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                    <p>: 1092 ថ្ងៃ</p>
+                    <p>: <?=@$data1["tenorAsDay"]?> ថ្ងៃ</p>
                 </div>
             </div>
             <div class="row">
@@ -115,13 +141,13 @@ if (isset($_POST["btn_search"])) {
                     <p>គោលបំណងកម្ចី</p>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                    <p>: កម្ចីបុគ្គលិក-បម្រើបម្រាស់ផ្សេងៗ</p>
+                    <p>: <?=@$data1["purpose"]?></p>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                     <p>រូបិយប័ណ្ណ</p>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                    <p>: ដុល្លារ</p>
+                    <p>:  <?=@$data1["currency"]?></p>
                 </div>
             </div>
             <div class="row">
@@ -129,13 +155,13 @@ if (isset($_POST["btn_search"])) {
                     <p>អាស័យដ្ឋាន</p>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                    <p>: តាំងក្រង់, ស្វាយទាប, ចំការលើ, កំពង់ចាម</p>
+                    <p>: <?=@$data1["address_line1"]?></p>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                     <p>សោហ៊ុយ​ត្រួតពិនិត្យឥណទាន</p>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                    <p>: 0.00% / 1 ខែ នៃ​សមតុល្យឥណទាន</p>
+                    <p>: <?=@$data1["admin_fee"]?>% / 1 ខែ នៃ​សមតុល្យឥណទាន</p>
                 </div>
             </div>
             <div class="row">
@@ -143,13 +169,13 @@ if (isset($_POST["btn_search"])) {
                     <p>ទីតាំងបង់ប្រាក់</p>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                    <p>: នៅការិយាល័យហ្វូណន</p>
+                    <p>: នៅការិយាល័យ</p>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                     <p>អត្រាការប្រាក់</p>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                    <p>: 0.833% / 1 ខែ</p>
+                    <p>: <?=@$data1["interest"]?>% / 1 ខែ</p>
                 </div>
             </div>
             <div class="row">
