@@ -32,7 +32,7 @@ if (isset($_POST["btn_search"])) {
             from d_credit crd
             inner join d_group_detail dgd on crd.customerId = dgd.groupId and dgd.member_type='1'
             inner join d_customer dc on dgd.customer_id = dc.id
-            where crd.code='CRD20220822094242' and ctmType='J'
+            where crd.code='".$CrdCode."' and ctmType='J'
             union all
             select
                 crd.cycle,
@@ -51,7 +51,7 @@ if (isset($_POST["btn_search"])) {
                 crd.currency
             from d_credit crd
             inner join d_customer dc on crd.customerId = dc.id
-            where crd.code='CRD20220822094242' and ctmType='S'";
+            where crd.code='".$CrdCode."' and ctmType='S'";
     @$data1 = fetch_single($conn, $sql1);
 }
 
